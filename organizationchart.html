@@ -1,0 +1,96 @@
+<html>
+	<!-- 
+		En directorio script, creo que sobraría:
+		jquery-1.7.2.min.js
+	-->
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="scripts/jquery-1.12.1.min.js"></script>	
+		<script type="text/javascript" src="scripts/jquery-ui-1.8.24.custom.min.js"></script>
+		
+		<script type="text/javascript" src="scripts/jquery.jOrgChart.js"></script>				
+		<!-- <script type="text/javascript" src="/_catalogs/masterpage/continental/scripts/spf-dropdown2013.js"></script>	 -->
+		<!-- <script type="text/javascript" src="/_catalogs/masterpage/continental/scripts/default.js"></script>		 -->
+		<!-- <script type="text/javascript" src="/_catalogs/masterpage/continental/scripts/news.js"></script> -->
+		<script type="text/javascript" src="scripts/InitOrganizationData.js"></script>
+		<script type="text/javascript" src="scripts/OrganizationChart.js"></script>
+		<script type="text/javascript" src="scripts/OrganizationTree.js"></script>
+		<script type="text/javascript" src="scripts/jquery.SPServices-2014.02.min.js"></script>
+
+		<script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+		<script type="text/javascript" src="scripts/knockout.mapping.js"></script>	
+		<script type="text/javascript" src="scripts/knockout.validation.js"></script>
+		<script type="text/javascript" src="scripts/jquery.dynatree-1.2.2.js"></script>
+
+
+		<link rel="stylesheet" type="text/css" href="styles/ui.dynatree.css"></link>
+		<link rel="stylesheet" type="text/css" href="styles/orgChart.css"></link>
+		<link rel="stylesheet" type="text/css" href="styles/Configuration.css"></link>			
+	</head>
+	<body>
+		<div id="appraisersFilter">
+			<div class="contentFilter">
+				<div id="showFilter" class="showFilter" style="display: none;" data-bind="visible:$data.showFilter">
+					<div class="closeButton" data-bind="click: eventClick_hideFilter">
+						<img src="<%= Page.GetRoot() %>/_layouts/Images/Intermark.PerformanceAppraisal/Common/close.gif" alt="Cerrar" align="right" />
+					</div>
+					<div class="filterControls">
+						<div class="cField">                    
+							<span id="lblFilterName" class="label">Nombre</span>
+							<div class="configField appraiserFilterPosition">
+								<input id="txtFilterName" data-bind="value: $data.filterName, valueUpdate: 'afterkeydown', executeOnEnter: $data.eventKeyUp_filterName" />
+							</div>
+						</div>
+						<div class="cField">                    
+							<span class="label">ID Empleado</span>
+							<div class="configField appraiserFilterPosition">
+								<input id="txtFilterCode" data-bind="value: $data.filterCode, valueUpdate: 'afterkeydown', executeOnEnter: $data.eventKeyUp_filterName" />
+							</div>
+						</div>
+						<div class="cFieldSelect">
+							<label class="label" data-bind="text: $root.companyNodeLevelNames()[0]" ></label>
+							<div class="configField employeeFilterPosition">
+								<select id="selectFilterUTR" class="ui-autocomplete-inputSetFilter" data-bind="autoComplete: companyNodeTypes, value: filterCompanyNodeType, optionsText: 'Name', optionsValue:'Id'">
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="cBoton">
+						<div class="button" data-bind="click: eventClick_applyFilter">                    
+							<span id="litFilterFind">Buscar</span>
+						</div>
+					</div>
+				</div>        
+			</div>	
+			<div class="configurationTopedge">
+				<div class="firstConfigurationBlock active" id="treeTypeText">
+					<span id="organizationMarker" class="link">Organizaci&oacute;n</span>            
+				</div>
+				<div class="lastConfigurationBlock">
+<!-- 					<div id="linkTreeTypeBlock" class="configurationFilterTopedge" data-bind="click: eventClick_viewTreeTypeFilter">
+						<span id="Label1" class="linkFilter link">Vista</span>                
+					</div>
+					<div id="linkFilterBlock" class="configurationFilterTopedge" data-bind="event:{click: eventClick_viewFilter}">
+						| <span id="linkFilter" class="linkFilter link">Filtrar</span>
+					</div>					 -->
+				</div>
+			</div>	
+		</div>
+		<div id="organizationTree" class="organizationTree">		
+			<div class="organizationTreeContent">
+				<div id="organizationTreeDynatree">
+				</div>      
+			</div>
+		</div>
+		
+		<div id="organizationChart" class="compentenciesAssignmentContent">
+			<div id="errorSection" class="errorSectionTitle" style="display: none;">
+				<div id="errorTitle" class="errorTitle">
+				</div>
+			</div>
+			<div style="clear:both;"></div>			
+
+			<div id="chartContainer" class="container"></div>			
+		</div>
+	</body>
+</html>

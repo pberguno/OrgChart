@@ -1,0 +1,211 @@
+﻿
+/* Captura de posibles errores */
+.errorSectionTitle{width:95%;float:left;padding:12px 0 0 5px;margin-left:12px;border-bottom:3px solid #f0f0f0;}
+.errorTitle{width:80%;float:left;font:bold 12px Arial;color:red; padding-top:10px;}
+
+.contentFilter{padding-right:15px;float:right;position:relative;}
+.link{cursor:pointer;}
+/**/
+.showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:-810px;top:25px;z-index:2000;
+            background:transparent url('/_catalogs/masterpage/continental/img/OrganizationTree/topfilterBackground.png') no-repeat 0 0;}         
+.showFilter .filterControls{ width:94%; margin-top:10px; float:left;border-left:1px solid #909090; border-right:1px solid #909090; background-color: #ffffff; padding: 0 0 10px 10px; }
+.filterControls .link { display:block; margin: 5px; color: #ae4e53; font: bold 13px Arial; }
+.filterControls .link:hover { text-decoration:underline; }
+
+.showFilter .ui-autocomplete-input { float: left;width:160px;}
+.showFilter .ui-button-text{ padding-bottom: 1px; padding-top:0;}
+.showFilter .cField, .showFilter .cFieldSelect{padding-top:12px;}
+.showFilter .cField input{width:177px;font:12px Arial;border:1px solid #abadb3; }
+.showFilter .cFieldSelect select{width:180px;font:12px Arial;color:#8d9093;border:1px solid #abadb3}
+
+.showFilter .cBoton{width: 100%; height: 44px; padding-top:12px;text-align:center; float:left;background:transparent url('/_catalogs/masterpage/continental/img/OrganizationTree/bottomfilterBackground.png') no-repeat 0 0;}
+.showFilter .button{float:right;margin:0 12px 0 10px;}
+
+.showFilter .label{ width: 80%; font:bold 11px Arial; }
+.showFilter .cField .label, .showFilter .cFieldSelect .label{ width:80%; font: bold 12px Arial; }
+
+
+.closeButton{padding:8px 5px 0 0;cursor:hand;cursor:pointer;}
+
+
+/* <GestiónUsuarios> */
+.usersAndStructureManagementContent{width:600px;border:1px solid #e2e3e6;margin:26px -400px 0px 310px; min-height: 550px;padding-bottom:30px;}
+table.dynamicFieldsTable{margin-top:5px;}
+table.dynamicFieldsTable td{padding:5px 0 5px 0;}
+table.dynamicFieldsTable td.fieldText{width:150px; padding-left:15px;}
+table.dynamicFieldsTable input[type="text"]{width:420px;font:12px Arial;}
+table.dynamicFieldsTable select.evaluationCombo{width:110px;font:12px Arial;float:right;border:1px solid #abadb3}
+table.dynamicFieldsTable td.buttonTable{padding:0 0px 0 0;background:#d6dee3;text-align:right;margin-top:22px;}
+table.dynamicFieldsTable span.ui-button-text{height:12px; padding-top:1px;}
+.paddingLeft20{padding-left:20px !important;}
+.userRolFieldText{padding:2px 10px 0 0;font:bold 12px Arial;color:#3e4248;}
+
+.dynatreeContainer{float:left;width:300px;}
+#organizationTree{clear:both;float:left;width:300px;}
+.btnStructureButton{clear:both;padding-top:5px;float:left;width:300px;}
+#UsersAndStructureManagement .configurationTopedge{padding: 8px 0 0 0 !important;}
+#administeredAreasTable input{width:330px !important;}
+#UsersAndStructureManagement .configurationTitle{float:none !important}
+/* </GestiónUsuarios> */
+
+/***** árbol de la organización *****/
+.organizationTree{float:left;width:300px;height:420px;margin:-12px 0px 2px 1px;
+                  background:#d6dee3 url("../img/OrganizationTree/OrganizationMarker.png") repeat-x 0 0;}
+.organizationTreeContent{padding:20px 1px 1px 0px;font-family:Arial;font-size:12px;}
+.organizationTreeContent a{ font-family:Arial;font-size:12px; color: #000; }
+
+ul.dynatree-container {height:99%; border: none; background-color: rgb(214, 222, 227); overflow-y: scroll; white-space: normal; }
+ul.dynatree-container li { background-image: none; }
+span.dynatree-connector { background-image: none; }
+span.dynatree-icon { display: none; }
+.organizationTree ul.dynatree-container a { font-family:Arial;font-size:12px;color:#000;background-color: rgb(214, 222, 227); width: 75%;cursor:default; }
+.organizationTree ul.dynatree-container a:hover{ background-color: rgb(214, 222, 227); }
+.topsLevelNodes {  font-family:Arial;font-size:12px;color:#000; font-weight: bold; }
+/* Evitar regla que está en ui.dynatree.css */
+
+
+/** **/
+#cleanFilterBlock img{ margin-left: 4px; cursor: pointer; }
+
+.configurationTopedge{float:left;width:300px;padding:8px 490px 0 0;font:bold 13px Arial;color:#4e83ae;position:relative;margin-left:0px;}
+.configurationTopedge .active{color:#222425;height:30px;background: transparent url("/_catalogs/masterpage/continental/img/OrganizationTree/selectedTree.png") no-repeat 38% 100%; z-index:2000; float:left;}
+.configurationTopedge .linkFilter{}
+.closeLinkFilter{ color: #ff0000}
+.firstConfigurationBlock{}
+.lastConfigurationBlock{ float: right; }
+.configurationBlockTopedge{float:left; padding-left: 0.5em;}
+.configurationFilterTopedge{float:left; padding-left: 0.5em;}
+
+.compentenciesAssignmentContent{float:left; min-width:75%;border:1px solid #e2e3e6;margin:-12px -400px 0px 10px; min-height: 500px;}
+.competenciescontent{float:left;width:100%;padding:7px 0px 0px 0px;font-family:Arial;font-size:11px;color:#3e4248;border:1px solid #e2e3e6;}
+
+.competenciestitle{clear:both;padding:15px 0px 0px 18px;font-family:Arial;color:#1774b3;font-size:14px;font-weight:bold;color:#4e83ae;}
+.competenciestext{clear:both;padding:10px 19px 18px 18px;font-family:Arial;font-size:12px;color:#777a7e;}
+
+.radioForm input{float:left; margin:0 0 0 0;}
+.radioForm label{display:block; margin: 0 0 8px 20px;}
+#appraisersProcessType .radioForm{clear:both; padding:10px 0 0 30px;}
+#appraisersProcessType .radioForm .radioForm {padding:5px 0 10px 20px;}
+
+.selectForm{text-align:center;font:bold 12px Arial;color:#666;}
+.selectForm select{width:55%;margin-left:10px;font:12px Arial;color:#000;border:1px solid #abadb3}
+#appraisersPairs .selectForm{padding:12px 0;}
+
+.formManagementLink{text-align:right;padding:20px 19px 0px 0px;font:12px Arial;color:#267eba;}
+.formManagementLink a{color:#267eba;text-decoration:none;}
+.formManagementLink a:hover{text-decoration:underline;}
+
+.behaviorCompetenciesAssignment{border:1px solid #e2e3e6;float:right;width:590px;background-color:transparent;min-height:260px;height:260px;margin:10px 15px 2px 1px;overflow-y:scroll;background-image:url("/_catalogs/masterpage/continental/img/OrganizationTree/BackgroundCompentenciesPanel.png");background-repeat:repeat-x;}
+.crossBehaviorCompetenciesAssignment{border:1px solid #e2e3e6;float:left;width:98%;background-color:transparent;min-height:260px;height:260px;margin:10px 15px 2px 1px;overflow-y:scroll;background-image:url("/_catalogs/masterpage/continental/img/OrganizationTree/BackgroundCompentenciesPanel.png");background-repeat:repeat-x;}
+.behaviorCompetenciesAssignmentContent{padding:15px 1px 1px 25px;font-family:Arial;font-size:12px;}
+
+
+
+
+#showTreeTypeFilter { left: -855px;}
+
+
+
+#appraisersContent .buttonContent{width:95%;float:left;}
+
+.ui-autocomplete{height: 200px;overflow-y: scroll !important;overflow-x: hidden !important;font:12px Arial; }
+#appraisersContent .ui-button-icon-only, #competenciesAssignmentContent .ui-button-icon-only, #UsersAndStructureManagement .ui-button-icon-only{width:1.5em !important;height:19px;background-color:#d4d0c8 !important;border-right:2px solid #404040 !important;border-bottom:2px solid #404040 !important;border-top:1px solid #404040 !important;}
+#appraisersContent .ui-icon, #competenciesAssignmentContent .ui-icon, #UsersAndStructureManagement .ui-icon{background:transparent url('/_catalogs/masterpage/continental/img/OrganizationTree/ui-icon.png') no-repeat 50% 50% !important;}
+
+
+table.configurationList{font:12px Arial;color:#777a7e;margin:14px 0 0 17px;}
+table.configurationList td.textitem{width:70%;padding:0 0 9px 18px;background:transparent url(../../../_layouts/Images/Intermark.PerformanceAppraisal/Common/bullet.gif) no-repeat 6px 35%;}
+table.configurationList td.valueitem{width:20%;float:right;text-align:center;}
+
+.configurationRibbonButton{width:99%;float:left;padding-right:12px;background:#c4cfd7;text-align:right;margin-top:15px;}
+
+#automatedMessaging table.ms-rtetoolbarmenu{ 
+    width:852px;
+} 
+
+#automatedMessaging iframe.ms-rtelonger, #automatedMessaging iframe.ms-rtelong{ 
+    width:850px;
+} 
+
+.apply-clear-left{clear: left;}
+
+#temporalOpening .ui-button-icon-only{width:1.5em !important;height:19px;background-color:#d4d0c8 !important;border-right:2px solid #404040 !important;border-bottom:2px solid #404040 !important;border-top:1px solid #404040 !important;}
+#temporalOpening .ui-icon{ background:transparent url('/_catalogs/masterpage/continental/img/OrganizationTree/ui-icon.png') no-repeat 50% 50% !important;}
+
+#taskUndoing .ui-button-icon-only{width:1.5em !important;height:19px;background-color:#d4d0c8 !important;border-right:2px solid #404040 !important;border-bottom:2px solid #404040 !important;border-top:1px solid #404040 !important;}
+#taskUndoing .ui-icon{ background:transparent url('/_catalogs/masterpage/continental/img/OrganizationTree/ui-icon.png') no-repeat 50% 50% !important;}
+#taskUndoing .ui-autocomplete-input { width: 280px; }
+#taskUndoing .fieldGroup50 {width:unset;margin-right:10px;}
+
+
+
+/*Texto identado en nodos multilínea de árboles de competencias */
+.competenciesTreeContent ul, .competenciesTreeContent li {clear:both;}
+.competenciesTreeContent li > input {float:left;margin-right:6px;border:none;}
+.competenciesTreeContent li > span {display:block;padding:3px 0 2px 0;margin-left:23px;}
+.behaviorCompetenciesAssignmentContent ul, .behaviorCompetenciesAssignmentContent li {clear:both;}
+.behaviorCompetenciesAssignmentContent li.ui-expander > span.ui-expander-head {float:left;padding:0;margin:2px 3px 0 0;}
+.behaviorCompetenciesAssignmentContent li.ui-expander > input {float:left;margin-right:6px;border:none;}
+.behaviorCompetenciesAssignmentContent li.ui-expander > span {display:block; padding:3px 0 2px 0;margin-left:37px;}
+.behaviorCompetenciesAssignmentContent li.behaviorsList > input {float:left;margin-right:6px;border:none;}
+.behaviorCompetenciesAssignmentContent li.behaviorsList > span {display:block; padding:3px 0 2px 0;margin-left:23px;}
+
+table.formsTable {width:100%;}
+table.formsTable td{ border: 1px solid #e2e3e6; padding:1px 0 1px 0.75%; font:12px Arial;}
+table.formsTable td.checkFormsTable{width:35px; text-align:center}
+table.formsTable thead tr{background-color:#e4e4e4; font-weight:bold;}
+
+.odd{background-color:#f0f0f0;}
+.even{background-color:#fff;}
+
+.compentenciesEditingContent{float:left;width:642px;margin:1px 0px 0px 0px;padding:10px 0 0 15px;}
+.competenciesText{padding-top:8px;}
+.competenciescontent{float:left;width:100%;padding:7px 0px 0px 0px;font-family:Arial;font-size:11px;color:#3e4248;border:1px solid #e2e3e6;}
+.behaviorAssignment{width:100%;height:213px;float:left;border:1px solid #e2e3e6;margin:12px 0 0 0;}
+.behaviorAssignmentContent{padding:10px 0px 0px 0px;font-family:Arial;font-size:12px;}
+
+.listWithoutDots{list-style-type:none; padding-left:0px;padding-top:0px;}
+.competenciesTextarea{width:99%; overflow-y:auto; font-family: Arial, helvetica, sans-serif; font-size: 12px;border:1px solid #cbcdcd;height:130px;}
+.competenciesfield100 input[type="text"]{width:99%;float:left;font:12px Arial;border:1px solid #cbcdcd;}
+.behaviorsfield100 input[type="text"]{width:98%;float:left;font:12px Arial;border:1px solid #cbcdcd;}
+.competenciesFieldText{float:left;padding:10px 10px 3px 0;font:bold 12px Arial;color:#3e4248;}
+.competenciesField{float:left;padding:10px 10px 3px 0;font:12px Arial;}
+
+
+/*Scroll IE*/
+.configurationContainer
+{
+    scrollbar-face-color: #f0f0f0;
+    scrollbar-highlight-color: #d6dee3;
+    scrollbar-shadow-color: #000;
+    scrollbar-3dlight-color:#f0f0f0;
+    scrollbar-arrow-color:#000;
+    scrollbar-track-color:#f0f0f0;
+    scrollbar-drakshadow-color:#000;
+}
+
+.crossBehaviorCompetenciesAssignment, .behaviorCompetenciesAssignment
+{
+    scrollbar-face-color: #f9f9f9;
+    scrollbar-highlight-color: #f9f9f9;
+    scrollbar-shadow-color: #000;
+    scrollbar-3dlight-color:#000;
+    scrollbar-arrow-color:#000;
+    scrollbar-track-color:#f9f9f9;
+    scrollbar-drakshadow-color:#000;
+}
+
+#importOrganization select { margin-bottom: 10px;}
+
+
+
+/* <FiltroAvanzado> */
+#advancedFilterContentArea{width:98%;clear:both;margin-bottom:20px;border:1px solid #abadb3;padding:10px 10px 10px 10px;}
+table.advancedFilterTable{margin-top:5px; width:100%;}
+table.advancedFilterTable td{padding:9px 0 6px 0;}
+table.advancedFilterTable input{width:300px !important;font:12px Arial;}
+table.advancedFilterTable select.evaluationCombo{width:110px;font:12px Arial;float:right;border:1px solid #abadb3;}
+table.advancedFilterTable td.buttonTable{padding:0 0px 0 0;background:#d6dee3;text-align:right;margin-top:22px;}
+table.advancedFilterTable span.ui-button-text{height:12px; padding-top:1px;}
+.filterOptions{height:30px;}
+/* </FiltroAvanzado> */
