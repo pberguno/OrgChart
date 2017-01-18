@@ -1,17 +1,10 @@
 <html>
-	<!-- 
-		En directorio script, creo que sobraría:
-		jquery-1.7.2.min.js
-	-->
 	<head>
 		<meta charset="utf-8" />
 		<script type="text/javascript" src="scripts/jquery-1.12.1.min.js"></script>	
 		<script type="text/javascript" src="scripts/jquery-ui-1.8.24.custom.min.js"></script>
 		
 		<script type="text/javascript" src="scripts/jquery.jOrgChart.js"></script>				
-		<!-- <script type="text/javascript" src="/_catalogs/masterpage/continental/scripts/spf-dropdown2013.js"></script>	 -->
-		<!-- <script type="text/javascript" src="/_catalogs/masterpage/continental/scripts/default.js"></script>		 -->
-		<!-- <script type="text/javascript" src="/_catalogs/masterpage/continental/scripts/news.js"></script> -->
 		<script type="text/javascript" src="scripts/InitOrganizationData.js"></script>
 		<script type="text/javascript" src="scripts/OrganizationChart.js"></script>
 		<script type="text/javascript" src="scripts/OrganizationTree.js"></script>
@@ -31,8 +24,7 @@
 		<div id="appraisersFilter">
 			<div class="contentFilter">
 				<div id="showFilter" class="showFilter" style="display: none;" data-bind="visible:$data.showFilter">
-					<div class="closeButton" data-bind="click: eventClick_hideFilter">
-						<img src="<%= Page.GetRoot() %>/_layouts/Images/Intermark.PerformanceAppraisal/Common/close.gif" alt="Cerrar" align="right" />
+					<div class="closeButton" data-bind="click: eventClick_hideFilter">						
 					</div>
 					<div class="filterControls">
 						<div class="cField">                    
@@ -67,12 +59,6 @@
 					<span id="organizationMarker" class="link">Organizaci&oacute;n</span>            
 				</div>
 				<div class="lastConfigurationBlock">
-<!-- 					<div id="linkTreeTypeBlock" class="configurationFilterTopedge" data-bind="click: eventClick_viewTreeTypeFilter">
-						<span id="Label1" class="linkFilter link">Vista</span>                
-					</div>
-					<div id="linkFilterBlock" class="configurationFilterTopedge" data-bind="event:{click: eventClick_viewFilter}">
-						| <span id="linkFilter" class="linkFilter link">Filtrar</span>
-					</div>					 -->
 				</div>
 			</div>	
 		</div>
