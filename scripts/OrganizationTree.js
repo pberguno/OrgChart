@@ -2,7 +2,7 @@
 $(document).ready(function() {
 	// Al tener los scripts integrados en la pagina maestra, debemos
 	// controlar cuando se tiene que ejecutar el codigo.	
-	if (window.location.pathname.toLowerCase().indexOf("organizationchart.aspx") >= 0){
+	//if (window.location.pathname.toLowerCase().indexOf("organizationchart.aspx") >= 0){
 		//LoadData();
 		var viewModelFilter = new window.organizationTree.Filter();
 		var viewModelOrganizationTree = new window.organizationTree.OrganizationTree(viewModelFilter);
@@ -41,7 +41,7 @@ $(document).ready(function() {
 		}else{
 			PaintException('Se ha producido un error: No hay datos en los catálogos de la organización.');			
 		}		
-	}
+	//}
 });
 
 $((function (win) {
