@@ -25,7 +25,8 @@ $((function (win) {
 			
 			$originalChart = $("div#chartContainer ul#org").clone();
 			$currentChart = $originalChart.clone();
-			$currentChart.jOrgChart(opts); //creates the jOrgChart
+			$currentChart.jOrgChart(opts); //creates the jOrgChart    
+            HideAssistantSecondLevels();
 
 			$("div.container div.node").click(function () {
 				var $this = $(this);
@@ -48,6 +49,7 @@ $((function (win) {
 					$("div.container").fadeOut(200, function () {
 						$("div.container").html("");
 						$currentChart.jOrgChart(opts);
+                        HideAssistantSecondLevels();
 						
 						$("div.container").fadeIn(200);
 						$("div.container div.node:not(:first)").click(function () {
