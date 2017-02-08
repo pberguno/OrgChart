@@ -8,7 +8,7 @@ $(document).ready(function() {
 		var viewModelOrganizationTree = new window.organizationTree.OrganizationTree(viewModelFilter);
 		var viewModelOrganizationChart = new window.organizationChart.OrganizationChartManagement(viewModelOrganizationTree);
 
-		// obtenemos la altura del marco situado a la derecha del árbol de la organización. 
+		// obtenemos la altura del marco situado a la derecha del ï¿½rbol de la organizaciï¿½n. 
 		// si ese marco no existe, establecemos una altura de 500
 		var organizationTreeHeight = 500;
 		$(".organizationTree").height(organizationTreeHeight);
@@ -31,7 +31,9 @@ $(document).ready(function() {
 			//employeesTreeNodes.push(node);
 			var test = getObjects(globalVar.organizationData, 'Id', node.Id, node.NodeType);
 			var html = transformNodeToHtml(test, false);
-			viewModelOrganizationChart.init_chart(html);
+            var customHtml = CustomizeHtml(html);
+			viewModelOrganizationChart.init_chart(customHtml);
+            // viewModelOrganizationChart.init_chart(html);
 		}
 		
 		var dataLoaded = viewModelOrganizationTree.fillOrganizationDynatree(); 
@@ -39,7 +41,7 @@ $(document).ready(function() {
 			$(document).data("treeViewModel", viewModelOrganizationTree);
 			viewModelOrganizationTree.run();
 		}else{
-			PaintException('Se ha producido un error: No hay datos en los catálogos de la organización.');			
+			PaintException('Se ha producido un error: No hay datos en los catalogos de la organizacion.');
 		}		
 	//}
 });
@@ -255,12 +257,12 @@ $((function (win) {
         self.autoFocus = ko.observable(false);		
 		self.onClick = function(node, event) {			
 			if (!node.bSelected){
-				// cuando el evento se produce sobre el título, seleccionamos el nodo
+				// cuando el evento se produce sobre el tï¿½tulo, seleccionamos el nodo
 				if(node.getEventTargetType(event) == "title") 
 					node.select(true);
 				
 				// cuando el evento se produce sobre el checkbox (no es ncesario select(true) porque sino lo deseleccionamos), 
-				// invocamos función
+				// invocamos funciï¿½n
 				if(node.getEventTargetType(event) == "title" || node.getEventTargetType(event) == "checkbox")
 					$.EventClick_OrganizationTreeNode(node);
 			}else{
@@ -416,9 +418,9 @@ $((function (win) {
     };
 })(window));
 
-// ## Funciones de utilidad sobre el árbol
+// ## Funciones de utilidad sobre el ï¿½rbol
 
-// Obtiene los nodos seleccionados del árbol
+// Obtiene los nodos seleccionados del ï¿½rbol
 $.getSelectedCompanyNodesFromTree = function () {
     var companyNodes = [];
     var organizationTreeViewModel = $(document).data("treeViewModel");
@@ -426,7 +428,7 @@ $.getSelectedCompanyNodesFromTree = function () {
         if ($.isFunction(organizationTreeViewModel.selectedNodes)) {
             var selectedNodes = organizationTreeViewModel.selectedNodes();
             if (!$.isEmptyObject(selectedNodes) || selectedNodes.length > 0) {
-                // Nos quedamos con el último nivel que esté marcado
+                // Nos quedamos con el ultimo nivel que esta marcado
                 $(selectedNodes).each(function (i) {
                     if (selectedNodes[i].childList == null)
                         companyNodes.push(selectedNodes[i]);
@@ -451,13 +453,13 @@ $.getSelectedCompanyNodesFromTree = function () {
     return companyNodes;
 }
 
-// Obtiene los filtros del árbol
+// Obtiene los filtros del ï¿½rbol
 $.getFiltersFromTree = function () {
     var organizationTreeViewModel = $(document).data("treeViewModel");
     return (!$.isEmptyObject(organizationTreeViewModel) && $.isFunction(organizationTreeViewModel.getFilters)) ? organizationTreeViewModel.getFilters() : {};
 };
 
-// Desmarca los nodos del árbol
+// Desmarca los nodos del ï¿½rbol
 $.deselectAllNodes = function (tree) {
 	$("#organizationTreeDynatree span").removeClass("dynatree-active");
     // if (tree.dynatree("getRoot").visit != undefined)
@@ -469,7 +471,7 @@ $.deselectAllNodes = function (tree) {
     return false;
 };
 
-// Recarga el árbol de la organización
+// Recarga el ï¿½rbol de la organizaciï¿½n
 $.reloadOrganizationTree = function () {
     var organizationTreeViewModel = $(document).data("treeViewModel");
     organizationTreeViewModel.treeType("Organization");

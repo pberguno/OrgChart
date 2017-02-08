@@ -88,3 +88,16 @@
 .jOrgChart .down, .jOrgChart .top, .jOrgChart .left, .jOrgChart .right {
     border-width: 2px;
 }
+
+.assistant{
+    position: absolute; 
+    top:70px; 
+    /*right: -70px; */
+    border-radius: 35px; 
+    box-shadow: 0 0 10px 1px #999;
+    background-color: #fff; 
+    /*z-index: 1;*/
+    margin-left: 150px;
+    width:200px;
+    border-bottom: 1px solid;
+}

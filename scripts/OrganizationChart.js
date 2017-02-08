@@ -4,7 +4,7 @@ var opts = {	// opciones del organigrama
 			chartElement : '#chartContainer', //your tree container
 			handleClick: false,
 			depth: 2,
-			interactive: false,
+			interactive: false
 			};
 
 $((function (win) {
