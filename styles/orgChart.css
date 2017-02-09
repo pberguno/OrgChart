@@ -62,11 +62,12 @@
     border: thin solid black;
     height: 80px;
     width: 150px;
-    border-radius: 10px; 
-    box-shadow: 0 0 5px 1px #999;    
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px #999;
+    padding-top:20px;
 }
 .jOrgChart .node span {
-    line-height: 30px;
+    line-height: 25px;
     vertical-align: middle;
     text-align: center;
 	font-size:15px;
@@ -92,25 +93,35 @@
 }
 
 .assistant{
-    position: absolute; 
-    top:55px; 
+    position: absolute;
+    top:55px;
     /*right: -70px; */
-    border-radius: 35px; 
+    border-radius: 35px;
     box-shadow: 0 0 10px 1px #999;
-    background-color: #fff; 
+    background-color: #fff;
     /*z-index: 1;*/
     margin-left: 200px;
     width:200px;
     border-bottom: 1px solid;
 }
-.companyNode, .positionType{
+.positionType{
     color:#ffae00 !important;
     line-height: 20px !important;
 }
 .manager, .assistant{
-    color: black;
+    /*color:#243032;*/
+    color:black;
 }
 .assistantLiteral{
     font-style: italic;
 }
-.companyNodeWithChildren{}
+.companyNodeWithChildren{
+    background-color: rgba(255, 174, 0, 0.6) !important;
+}
+
+.companyNodeWithChildren .companyNode{
+    /*color:white !important;*/
+    color:#243032 !important;
+    
+}
+
