@@ -30,7 +30,7 @@ $(document).ready(function() {
 			node.NodeType = (selectedNode.data.nodeType == null ? "Employee" : selectedNode.data.nodeType);
 			//employeesTreeNodes.push(node);
 			var test = getObjects(globalVar.organizationData, 'Id', node.Id, node.NodeType);
-			var html = transformNodeToHtml(test, false);
+			var html = transformNodeToHtml(test, false, false);
             var customHtml = CustomizeHtml(html);
 			viewModelOrganizationChart.init_chart(customHtml);
             // viewModelOrganizationChart.init_chart(html);

@@ -128,7 +128,9 @@ $((function (win) {
                     var $tr = $this.closest("tr");
 
                     if ($tr.hasClass('contracted')) {
-                        $this.css('cursor', 'hand');
+                        $this.css('cursor', 'hand');                        
+                        $this.addClass('companyNodeWithChildren');
+
                         $tr.removeClass('contracted').addClass('expanded');
                         $tr.nextAll("tr").css('visibility', '');
 
@@ -136,7 +138,8 @@ $((function (win) {
                         // maintain their appearance
                         $node.removeClass('collapsed');
                     } else {
-                        $this.css('cursor', 'hand');
+                        $this.css('cursor', 'hand');          
+                        $this.addClass('companyNodeWithChildren');
                         $tr.removeClass('expanded').addClass('contracted');
                         $tr.nextAll("tr").css('visibility', 'hidden');
 
@@ -153,6 +156,7 @@ $((function (win) {
         if ($childNodes.length > 0) {
             // if it can be expanded then change the cursor
             $nodeDiv.css('cursor', 'hand');
+            $nodeDiv.addClass('companyNodeWithChildren');
 
             // recurse until leaves found (-1) or to the level specified
             if (opts.depth == -1 || (level + 1 < opts.depth)) {
@@ -192,6 +196,9 @@ $((function (win) {
 
             }
             $tbody.append($childNodesRow);
+        }else if ($childNodes.length == 0){
+            if ($node.children()[0].className == "companyNode")
+                $nodeDiv.css('cursor', 'hand');
         }
 
         // any classes on the LI element get copied to the relevant node in the tree
@@ -206,6 +213,7 @@ $((function (win) {
                         $nodeRow.removeClass('expanded');
                         $nodeRow.addClass('contracted');
                         $nodeDiv.css('cursor', 'hand');
+                        $nodeDiv.addClass('companyNodeWithChildren');
                     } else {
                         $nodeDiv.addClass(item);
                     }
