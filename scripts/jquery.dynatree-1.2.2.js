@@ -103,8 +103,78 @@ function noop() {
  *	Class DynaTreeNode
  */
 var DynaTreeNode = Class.create();
+var clear = true;
+
+
+
+
+
+
+
 
 DynaTreeNode.prototype = {
+	/*********************************** BUSQUEDA */
+	search: function(pattern){
+		if(pattern.length < 1 && !clear){
+			clear = true;
+			this.visit(function(node){
+				node.expand(true);
+				node.li.hidden = false;
+				node.expand(false);
+			});
+		} else if (pattern.length >= 1) {
+			clear = false;
+			this.visit(function(node){
+				node.expand(true);
+				node.li.hidden = false;
+			});
+
+			for (var i = 0; i < this.childList.length; i++){
+				var hide = {hide: false};
+				this.childList[i]._searchNode(pattern, hide);
+			}
+		} 
+	},	
+	_searchNode: function(pattern, hide){
+
+		if (this.childList){
+			// parent node
+
+			var hideNode = true;
+			for(var i = 0; i < this.childList.length; i++){
+				var hideChild = {hide: false};
+				this.childList[i]._searchNode(pattern, hideChild);
+				hideNode = hideNode && hideChild.hide;
+			}
+			if(hideNode && !this._isRightWithPattern(pattern)){
+				this._hideNode();
+				hide.hide = true;
+			} else {
+				hide.hide = false;
+			}
+
+		} else {
+			// leaf
+			if (!this._isRightWithPattern(pattern)){
+				this._hideNode();
+				hide.hide = true;
+			} else {
+				hide.hide = false;
+			}
+		}
+	},
+	_isRightWithPattern: function(pattern){
+		if((this.data.title.toLowerCase()).indexOf(pattern.toLowerCase()) >= 0){
+			return true;
+		}
+		return false;
+	},
+	_hideNode: function(){
+		if(this.li) {
+			this.li.hidden = true;
+    	}
+	},	
+
 	initialize: function(parent, tree, data) {
 		/**
 		 * @constructor
@@ -1153,7 +1223,7 @@ DynaTreeNode.prototype = {
 			var aTag = this.span.getElementsByTagName("a");
 			if(aTag[0]){
 				// issue 154, 313
-				// PBD - Comentado, ya que el método $.browser se elimina de la versión jQuery 1.9
+				// PBD - Comentado, ya que el mï¿½todo $.browser se elimina de la versiï¿½n jQuery 1.9
 				// http://stackoverflow.com/questions/14923301/uncaught-typeerror-cannot-read-property-msie-of-undefined-jquery-tools				
 				// if(!($.browser.msie && parseInt($.browser.version, 10) < 9)){
 					// aTag[0].focus();

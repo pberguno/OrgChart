@@ -1,4 +1,5 @@
 
+
 $(document).ready(function() {
 	// Al tener los scripts integrados en la pagina maestra, debemos
 	// controlar cuando se tiene que ejecutar el codigo.	
@@ -33,7 +34,6 @@ $(document).ready(function() {
 			var html = transformNodeToHtml(test, false, false);
             var customHtml = CustomizeHtml(html);
 			viewModelOrganizationChart.init_chart(customHtml);
-            // viewModelOrganizationChart.init_chart(html);
 		}
 		
 		var dataLoaded = viewModelOrganizationTree.fillOrganizationDynatree(); 
@@ -45,6 +45,11 @@ $(document).ready(function() {
 		}		
 	//}
 });
+
+
+
+
+
 
 $((function (win) {
     // ###### Espacio de nombres ######
@@ -148,19 +153,23 @@ $((function (win) {
         }
 
         self.applyFilter = function () {
-            var companyNodeType = self.filterCompanyNodeType();
-            var organizationTreeViewModel = $(document).data("treeViewModel");
-            organizationTreeViewModel.employeeNameFilter(self.filterName());
-            organizationTreeViewModel.employeeCodeFilter(self.filterCode());
-            organizationTreeViewModel.companyNodeTypeFilter(companyNodeType);
-            organizationTreeViewModel.companyNodeFilters(self.getCompanyNodesSelected());
-            organizationTreeViewModel.fillOrganizationDynatree();
+            // var companyNodeType = self.filterCompanyNodeType();
+            // var organizationTreeViewModel = $(document).data("treeViewModel");
+            // organizationTreeViewModel.employeeNameFilter(self.filterName());
+            // organizationTreeViewModel.employeeCodeFilter(self.filterCode());
+            // organizationTreeViewModel.companyNodeTypeFilter(companyNodeType);
+            // organizationTreeViewModel.companyNodeFilters(self.getCompanyNodesSelected());
+            // organizationTreeViewModel.fillOrganizationDynatree();
+            // self.eventClick_hideFilter();
+            // $("#cleanFilterBlock").show();
+            // $("#linkFilterBlock").hide();
+            $("#organizationTreeDynatree").dynatree("getRoot").search(self.filterName());
             self.eventClick_hideFilter();
             $("#cleanFilterBlock").show();
-            $("#linkFilterBlock").hide();
+            $("#linkFilterBlock").hide();            
         }
 
-        self.eventClick_applyFilter = function () {
+        self.eventClick_applyFilter = function (searchPattern) {
             self.applyFilter();
         }
 
@@ -487,3 +496,18 @@ $.removeOrganizationTreeSelectedNodes = function () {
     var organizationTreeViewModel = $(document).data("treeViewModel");
     organizationTreeViewModel.removeSelectedNodes();
 }
+
+var ENTER_KEY = 13;
+ko.bindingHandlers.executeOnEnter = {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+        var allBindings = allBindingsAccessor();
+        $(element).keypress(function (event) {
+            var keyCode = (event.which ? event.which : event.keyCode);
+            if (keyCode === ENTER_KEY) {
+                allBindings.executeOnEnter.call(viewModel);
+                return false;
+            }
+            return true;
+        });
+    }
+};

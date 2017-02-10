@@ -4,16 +4,17 @@
 		<script type="text/javascript" src="scripts/jquery-1.12.1.min.js"></script>	
 		<script type="text/javascript" src="scripts/jquery-ui-1.8.24.custom.min.js"></script>
 		
-		<script type="text/javascript" src="scripts/jquery.jOrgChart.js"></script>				
-		<script type="text/javascript" src="scripts/InitOrganizationData.js"></script>
-		<script type="text/javascript" src="scripts/OrganizationChart.js"></script>
-		<script type="text/javascript" src="scripts/OrganizationTree.js"></script>
-		<script type="text/javascript" src="scripts/jquery.SPServices-2014.02.min.js"></script>
 
 		<script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
 		<script type="text/javascript" src="scripts/knockout.mapping.js"></script>	
 		<script type="text/javascript" src="scripts/knockout.validation.js"></script>
 		<script type="text/javascript" src="scripts/jquery.dynatree-1.2.2.js"></script>
+
+				<script type="text/javascript" src="scripts/jquery.jOrgChart.js"></script>				
+		<script type="text/javascript" src="scripts/InitOrganizationData.js"></script>
+		<script type="text/javascript" src="scripts/OrganizationChart.js"></script>
+		<script type="text/javascript" src="scripts/OrganizationTree.js"></script>
+		<script type="text/javascript" src="scripts/jquery.SPServices-2014.02.min.js"></script>
 
 
 		<link rel="stylesheet" type="text/css" href="styles/ui.dynatree.css"></link>
@@ -25,11 +26,12 @@
 			<div class="contentFilter">
 				<div id="showFilter" class="showFilter" style="display: none;" data-bind="visible:$data.showFilter">
 					<div class="closeButton" data-bind="click: eventClick_hideFilter">						
+						<img src="img/OrganizationTree/close.gif" alt="Cerrar" align="right" />						
 					</div>
 					<div class="filterControls">
 						<div class="cField">                    
 							<span id="lblFilterName" class="label">Nombre</span>
-							<div class="configField appraiserFilterPosition">
+							<div class="configField appraiserFilterPosition" data-bind="executeOnEnter: eventClick_applyFilter">
 								<input id="txtFilterName" data-bind="value: $data.filterName, valueUpdate: 'afterkeydown', executeOnEnter: $data.eventKeyUp_filterName" />
 							</div>
 						</div>
@@ -59,9 +61,15 @@
 					<span id="organizationMarker" class="link">Organizaci&oacute;n</span>            
 				</div>
 				<div class="lastConfigurationBlock">
-				</div>
-			</div>	
-		</div>
+					<div id="linkFilterBlock" class="configurationFilterTopedge" data-bind="event:{click: eventClick_viewFilter}"> | <span id="linkFilter" class="linkFilter link">Filtrar</span>					
+					</div>
+					<div id="cleanFilterBlock" class="configurationFilterTopedge hidden">
+						| <span id="linkFilterCleanBlock" class="closeLinkFilter link"
+							data-bind="event:{click: eventClick_viewFilter}">Filtrar</span>
+						<img src="img/OrganizationTree/closeRed.gif" alt="" data-bind="event:{click: eventClick_cleanFilter}" />
+					</div>					
+				</div>	
+			</div>
 		<div id="organizationTree" class="organizationTree">		
 			<div class="organizationTreeContent">
 				<div id="organizationTreeDynatree">

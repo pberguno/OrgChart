@@ -14,11 +14,11 @@
 .errorSectionTitle{width:95%;float:left;padding:12px 0 0 5px;margin-left:12px;border-bottom:3px solid #f0f0f0;}
 .errorTitle{width:80%;float:left;font:bold 12px Arial;color:red; padding-top:10px;}
 
-.contentFilter{padding-right:15px;float:right;position:relative;}
+/*.contentFilter{padding-right:15px;float:right;position:relative;}*/
 .link{cursor:pointer;}
 /**/
-.showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:-810px;top:25px;z-index:2000;
-            background:transparent url('/_catalogs/masterpage/continental/img/OrganizationTree/topfilterBackground.png') no-repeat 0 0;}         
+.showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:110px;top:35px;z-index:2000;
+            background:transparent url('../img/OrganizationTree/topfilterBackground.png') no-repeat 0 0;}         
 .showFilter .filterControls{ width:94%; margin-top:10px; float:left;border-left:1px solid #909090; border-right:1px solid #909090; background-color: #ffffff; padding: 0 0 10px 10px; }
 .filterControls .link { display:block; margin: 5px; color: #ae4e53; font: bold 13px Arial; }
 .filterControls .link:hover { text-decoration:underline; }
@@ -29,8 +29,10 @@
 .showFilter .cField input{width:177px;font:12px Arial;border:1px solid #abadb3; }
 .showFilter .cFieldSelect select{width:180px;font:12px Arial;color:#8d9093;border:1px solid #abadb3}
 
-.showFilter .cBoton{width: 100%; height: 44px; padding-top:12px;text-align:center; float:left;background:transparent url('/_catalogs/masterpage/continental/img/OrganizationTree/bottomfilterBackground.png') no-repeat 0 0;}
-.showFilter .button{float:right;margin:0 12px 0 10px;}
+.showFilter .cBoton{width: 100%; height: 44px; padding-top:12px;text-align:center; float:left;background:transparent url('../img/OrganizationTree/bottomfilterBackground.png') no-repeat 0 0;}
+/*.showFilter .button{float:right;margin:0 12px 0 10px;width:100px;}*/
+.showFilter .button{float:right;padding:5px 0px 5px 0;width:74px;margin:4px 0px;font:11px Arial;color:#fff;text-align:center;margin-right:8px;
+	background: transparent url("../img/OrganizationTree/button.gif") no-repeat;cursor:hand;cursor:pointer;}
 
 .showFilter .label{ width: 80%; font:bold 11px Arial; }
 .showFilter .cField .label, .showFilter .cFieldSelect .label{ width:80%; font: bold 12px Arial; }
@@ -79,7 +81,7 @@ span.dynatree-icon { display: none; }
 #cleanFilterBlock img{ margin-left: 4px; cursor: pointer; }
 
 .configurationTopedge{float:left;width:300px;padding:8px 490px 0 0;font:bold 13px Arial;color:#4e83ae;position:relative;margin-left:0px;}
-.configurationTopedge .active{color:#222425;height:30px;background: transparent url("/_catalogs/masterpage/continental/img/OrganizationTree/selectedTree.png") no-repeat 38% 100%; z-index:2000; float:left;}
+.configurationTopedge .active{color:#222425;height:30px;background: transparent url("../img/OrganizationTree/selectedTree.png") no-repeat 38% 100%; z-index:2000; float:left;}
 .configurationTopedge .linkFilter{}
 .closeLinkFilter{ color: #ff0000}
 .firstConfigurationBlock{}
@@ -219,6 +221,7 @@ table.advancedFilterTable select.evaluationCombo{width:110px;font:12px Arial;flo
 table.advancedFilterTable td.buttonTable{padding:0 0px 0 0;background:#d6dee3;text-align:right;margin-top:22px;}
 table.advancedFilterTable span.ui-button-text{height:12px; padding-top:1px;}
 .filterOptions{height:30px;}
+.hidden{ display: none; }
 /* </FiltroAvanzado> */
 
 
