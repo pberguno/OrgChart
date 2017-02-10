@@ -17,7 +17,7 @@
 /*.contentFilter{padding-right:15px;float:right;position:relative;}*/
 .link{cursor:pointer;}
 /**/
-.showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:110px;top:35px;z-index:2000;
+.showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:110px;top:35px;
             background:transparent url('../img/OrganizationTree/topfilterBackground.png') no-repeat 0 0;}         
 .showFilter .filterControls{ width:94%; margin-top:10px; float:left;border-left:1px solid #909090; border-right:1px solid #909090; background-color: #ffffff; padding: 0 0 10px 10px; }
 .filterControls .link { display:block; margin: 5px; color: #ae4e53; font: bold 13px Arial; }
