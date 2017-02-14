@@ -9,7 +9,7 @@ $(document).ready(function () {
     var viewModelOrganizationTree = new window.organizationTree.OrganizationTree(viewModelFilter);
     var viewModelOrganizationChart = new window.organizationChart.OrganizationChartManagement(viewModelOrganizationTree);
 
-    // obtenemos la altura del marco situado a la derecha del �rbol de la organizaci�n. 
+    // obtenemos la altura del marco situado a la derecha del árbol de la organización. 
     // si ese marco no existe, establecemos una altura de 500
     var organizationTreeHeight = 500;
     $(".organizationTree").height(organizationTreeHeight);
@@ -22,17 +22,18 @@ $(document).ready(function () {
     ko.applyBindings(viewModelOrganizationTree, document.getElementById("organizationTree"));
     ko.applyBindings(viewModelOrganizationChart, document.getElementById("organizationChart"));
 
+    // Evento asociado al click sobre un nodo del arbol de la organización
     $.EventClick_OrganizationTreeNode = function (selectedNode) {
+        // asignamos el resaltado sobre el nodo del árbol seleccionado.
         $("#organizationTreeDynatree span").removeClass("dynatree-active");
-        selectedNode.span.className = selectedNode.span.className + " dynatree-active"
+        selectedNode.span.className = selectedNode.span.className + " dynatree-active";
 
         var node = new Object();
         node.Id = selectedNode.data.id;
-        node.NodeType = (selectedNode.data.nodeType == null ? "Employee" : selectedNode.data.nodeType);
-        //employeesTreeNodes.push(node);
-        var test = getObjects(globalVar.organizationData, 'Id', node.Id, node.NodeType);
-        var html = transformNodeToHtml(test, false, false);
-        var customHtml = CustomizeHtml(html);
+        node.NodeType = (selectedNode.data.nodeType == null ? "Employee" : selectedNode.data.nodeType);        
+        var hierarchicalObjects = getHierarchicalObjects(globalVar.organizationData, 'Id', node.Id, node.NodeType);
+        var html = transformNodeToHtml(hierarchicalObjects, false, false);
+        var customHtml = customizeHtml(html);
         viewModelOrganizationChart.init_chart(customHtml);
     }
 
@@ -45,11 +46,6 @@ $(document).ready(function () {
     }
     //}
 });
-
-
-
-
-
 
 $((function (win) {
     // ###### Espacio de nombres ######
