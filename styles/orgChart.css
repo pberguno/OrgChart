@@ -14,114 +14,34 @@
 .jOrgChart{margin:auto; text-align: center; padding-top:10px; }
 .jOrgChart table {margin: auto;}
 
-/* Draw the lines */
- .jOrgChart .chartline {
-    height : 20px;
-    width : 4px;
-}
-.jOrgChart .down {
-    background-color : black;
-    margin : 0px auto;
-}
-.jOrgChart .top {
-    border-top : 3px solid black;
-}
-.jOrgChart .left {
-    border-right : 2px solid black;
-}
-.jOrgChart .right {
-    border-left : 2px solid black;
-}
-/* node cell */
- .jOrgChart td {
-    text-align : center;
-    vertical-align : top;
-    padding : 0;
-}
-/* The node */
- .jOrgChart .node {
-    background-color : #35363B;
-    display : inline-block;
-    width : 96px;
-    height : 60px;
-    z-index : 10;
-    margin : 0 2px;
-}
-/* jQuery drag 'n drop */
- .drag-active {
-    border-style : dotted !important;
-}
-.drop-hover {
-    border-style : solid !important;
-    border-color : #E05E00 !important;
-}
-.jOrgChart .node {
-    margin-left: 20px;
-    margin-right: 20px;
-    background-color: white;
-    border: thin solid black;
-    height: 80px;
-    width: 150px;
-    border-radius: 10px;
-    box-shadow: 0 0 5px 1px #999;
-    padding-top:20px;
-}
-.jOrgChart .node span {
-    line-height: 25px;
-    vertical-align: middle;
-    text-align: center;
-	font-size:15px;
-}
-.jOrgChart .node span[data-id] {
-    font-weight: bold;
-    color: #ffae00;
-}
-.jOrgChart > table > tbody > tr.node-cells .node span[data-id] {
-    color: black;
-}
-.jOrgChart .node img {
-    float: left;
-    margin-left: -20px;
-    max-height: 52px;
-    max-width: 42px;
-}
-.jOrgChart .chartline {
-    width: 2px;
-}
-.jOrgChart .down, .jOrgChart .top, .jOrgChart .left, .jOrgChart .right {
-    border-width: 2px;
-}
+/* Líneas del organigrama */
+.jOrgChart .chartline {height : 20px;width : 4px;}
+.jOrgChart .down {background-color : black;margin : 0px auto;}
+.jOrgChart .top {border-top : 3px solid black;}
+.jOrgChart .left {border-right : 2px solid black;}
+.jOrgChart .right {border-left : 2px solid black;}
 
-.assistant{
-    position: absolute;
-    top:55px;
-    /*right: -70px; */
-    border-radius: 35px;
-    box-shadow: 0 0 10px 1px #999;
-    background-color: #fff;
-    /*z-index: 1;*/
-    margin-left: 200px;
-    width:200px;
-    border-bottom: 1px solid;
-}
-.positionType{
-    color:#ffae00 !important;
-    line-height: 20px !important;
-}
-.manager, .assistant{
-    /*color:#243032;*/
-    color:black;
-}
-.assistantLiteral{
-    font-style: italic;
-}
-.companyNodeWithChildren{
-    background-color: rgba(255, 174, 0, 0.6) !important;
-}
+/* Nivel nodo */
+.jOrgChart td {text-align : center;vertical-align : top;padding : 0;}
 
-.companyNodeWithChildren .companyNode{
-    /*color:white !important;*/
-    color:#243032 !important;
-    
-}
+/* Nodo */
+.jOrgChart .node {background-color : #35363B; display : inline-block; width : 96px; height : 60px; z-index : 10; margin : 0 2px;}
+.drop-hover {border-style : solid !important;border-color : #E05E00 !important;}
+.jOrgChart .node {margin-left: 20px; margin-right: 20px; background-color: white; border: thin solid black; height: 80px; width: 150px; border-radius: 10px; box-shadow: 0 0 5px 1px #999; padding-top:20px;}
+.jOrgChart .node span {line-height: 25px; vertical-align: middle; text-align: center; font-size:15px;}
+.jOrgChart .node span[data-id] {font-weight: bold; color: #ffae00;}
+.jOrgChart > table > tbody > tr.node-cells .node span[data-id] {color: black;}
+.jOrgChart .node img {float: left; margin-left: -20px; max-height: 52px; max-width: 42px;}
+.jOrgChart .chartline {width: 2px;}
+.jOrgChart .down, .jOrgChart .top, .jOrgChart .left, .jOrgChart .right {border-width: 2px;}
+
+/* Puestos de trabajo */
+.assistant{position: absolute; top:55px; border-radius: 35px; box-shadow: 0 0 10px 1px #999; background-color: #fff; margin-left: 200px; width:200px; border-bottom: 1px solid;}
+.positionType{color:#ffae00 !important; line-height: 20px !important;}
+.manager, .assistant{color:black;}
+.assistantLiteral{font-style: italic;}
+
+/* Nodos de compañía con hijos. */
+.companyNodeWithChildren{background-color: rgba(255, 174, 0, 0.6) !important;}
+.companyNodeWithChildren .companyNode{color:#243032 !important;}
 

@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/ui.dynatree.css"></link>
 	<link rel="stylesheet" type="text/css" href="styles/orgChart.css"></link>
 	<link rel="stylesheet" type="text/css" href="styles/Configuration.css"></link>
-		
+
 	<script type="text/javascript" src="scripts/lib/jquery-1.12.1.min.js"></script>
 	<script type="text/javascript" src="scripts/lib/jquery-ui-1.8.24.custom.min.js"></script>
 	<script type="text/javascript" src="scripts/lib/knockout-2.2.1.js"></script>
@@ -36,19 +36,6 @@
 							/>
 						</div>
 					</div>
-					<!--<div class="cField">                    
-							<span class="label">ID Empleado</span>
-							<div class="configField appraiserFilterPosition">
-								<input id="txtFilterCode" data-bind="value: $data.filterCode, valueUpdate: 'afterkeydown', executeOnEnter: $data.eventKeyUp_filterName" />
-							</div>
-						</div>
-						<div class="cFieldSelect">
-							<label class="label" data-bind="text: $root.companyNodeLevelNames()[0]" ></label>
-							<div class="configField employeeFilterPosition">
-								<select id="selectFilterUTR" class="ui-autocomplete-inputSetFilter" data-bind="autoComplete: companyNodeTypes, value: filterCompanyNodeType, optionsText: 'Name', optionsValue:'Id'">
-								</select>
-							</div>
-						</div>-->
 				</div>
 				<div class="cBoton">
 					<div class="button" data-bind="click: eventClick_applyFilter">
@@ -77,7 +64,7 @@
 			</div>
 		</div>
 
-		<div id="organizationChart" class="compentenciesAssignmentContent">
+		<div id="organizationChart" class="organizationChartContent">
 			<div id="errorSection" class="errorSectionTitle" style="display: none;">
 				<div id="errorTitle" class="errorTitle">
 				</div>
