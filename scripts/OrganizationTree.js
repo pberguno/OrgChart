@@ -4,7 +4,7 @@ $(document).ready(function () {
     // Al tener los scripts integrados en la pagina maestra, debemos
     // controlar cuando se tiene que ejecutar el codigo.	
     //if (window.location.pathname.toLowerCase().indexOf("organizationchart.aspx") >= 0){
-    //LoadData();
+    //LoadData();    
     var viewModelFilter = new window.organizationTree.Filter();
     var viewModelOrganizationTree = new window.organizationTree.OrganizationTree(viewModelFilter);
     var viewModelOrganizationChart = new window.organizationChart.OrganizationChartManagement(viewModelOrganizationTree);
@@ -24,13 +24,13 @@ $(document).ready(function () {
 
     // Evento asociado al click sobre un nodo del arbol de la organización
     $.EventClick_OrganizationTreeNode = function (selectedNode) {
-        // asignamos el resaltado sobre el nodo del árbol seleccionado.
+        // asignamos el resaltado sobre el nodo del árbol seleccionado.        
         $("#organizationTreeDynatree span").removeClass("dynatree-active");
         selectedNode.span.className = selectedNode.span.className + " dynatree-active";
 
         var node = new Object();
         node.Id = selectedNode.data.id;
-        node.NodeType = (selectedNode.data.nodeType == null ? "Employee" : selectedNode.data.nodeType);        
+        node.NodeType = (selectedNode.data.nodeType == null ? "Employee" : selectedNode.data.nodeType);
         var hierarchicalObjects = getHierarchicalObjects(globalVar.organizationData, 'Id', node.Id, node.NodeType);
         var html = transformNodeToHtml(hierarchicalObjects, false, false);
         var customHtml = customizeHtml(html);
@@ -55,114 +55,22 @@ $((function (win) {
     else
         app = win.organizationTree;
 
-
-    app.CompanyNode = function () {
-        var self = this;
-        self.companyNodes = ko.observableArray([]);
-        self.selectedCompanyNode = ko.observable();
-        self.level = ko.observable();
-        self.nextLevelNode = ko.observable();
-
-        self.selectedCompanyNode.subscribe(function (companyNodeSelected) {
-            var params = new Object();
-            //params.year = $.getLocationParams().Year;
-            params.companyNode = companyNodeSelected;
-            //amplify.request("getCompanyNodesFromCompanyNode", JSON.stringify(params), self.initializaCompanyNodeFormCompanyNode.bind(self));
-        });
-        self.initializaCompanyNodeFormCompanyNode = function (childrenCompanyNode) {
-            var cn = $.getMainObject(childrenCompanyNode);
-            if (!$.isEmptyObject(cn)) {
-                var companyNode = new app.CompanyNode();
-                companyNode.companyNodes(cn);
-                companyNode.level(self.level() + 1);
-
-                self.nextLevelNode(companyNode);
-            }
-        }
-    };
-
+    /* Filtrado del árbol. */
     app.Filter = function () {
         var self = this;
         self.showFilter = ko.observable(false);
-        self.showTreeTypeFilter = ko.observable(false);
         self.filterName = ko.observable();
         self.filterCode = ko.observable();
-        self.companyNodeTypes = ko.observableArray([]);
-        self.companyNodeLevelNames = ko.observable([]);
         self.companyNode = ko.observable();
 
-        self.initializaCompnayNodeFormCompanyNode = function (companyNodes) {
-            var cn = $.getMainObject(companyNodes);
-        }
-
-        self.currentLevel = ko.observable(1); //
-
-        self.filterCompanyNodeType = ko.observable();
-        self.filterCompanyNodeType.subscribe(function (companyNodeTypeSelected) {
-            if (companyNodeTypeSelected) {
-                var params = new Object();
-                //params.year = $.getLocationParams().Year;
-                params.companyNodeType = companyNodeTypeSelected;
-                //amplify.request("getCompanyNodesFromCompanyNodeType", JSON.stringify(params), self.initializaCompanyNodeFromCompanyNodeTypeLevel.bind(self));
-            }
-        });
-
-        // Establece que control tiene el foco
-        self.ViewMarkerHasFocus = ko.observable(1);
-        self.treeType = ko.observable("Organization");
-
-        self.initializaCompanyNodeFromCompanyNodeTypeLevel = function (companyNodes) {
-            self.currentLevel(2);
-            var cn = $.getMainObject(companyNodes);
-
-            if (!$.isEmptyObject(cn)) {
-                self.currentLevel(self.currentLevel() + 1);
-                var companyNode = new app.CompanyNode();
-                companyNode.companyNodes(cn);
-                companyNode.level(self.currentLevel());
-
-                self.companyNode(companyNode);
-            }
-        }
-
-        self.eventClick_organizationMarker = function (event) {
-            initializeConfigurationTopEdge();
-
-            var organizationTreeViewModel = $(document).data("treeViewModel");
-            organizationTreeViewModel.treeType("Organization");
-            organizationTreeViewModel.fillOrganizationDynatree();
-
-            self.ViewMarkerHasFocus(1);
-        };
-
-        self.getCompanyNodesSelected = function () {
-            var companyNodes = [];
-            var cn = self.companyNode();
-            while (cn) {
-                if (cn.selectedCompanyNode()) {
-                    companyNodes.push(cn.selectedCompanyNode());
-                }
-
-                cn = cn.nextLevelNode();
-            }
-            return companyNodes;
+        self.eventClick_hideFilter = function (event) {
+            self.showFilter(false);
         }
 
         self.applyFilter = function () {
-            // var companyNodeType = self.filterCompanyNodeType();
-            // var organizationTreeViewModel = $(document).data("treeViewModel");
-            // organizationTreeViewModel.employeeNameFilter(self.filterName());
-            // organizationTreeViewModel.employeeCodeFilter(self.filterCode());
-            // organizationTreeViewModel.companyNodeTypeFilter(companyNodeType);
-            // organizationTreeViewModel.companyNodeFilters(self.getCompanyNodesSelected());
-            // organizationTreeViewModel.fillOrganizationDynatree();
-            // self.eventClick_hideFilter();
-            // $("#cleanFilterBlock").show();
-            // $("#linkFilterBlock").hide();
-
             if (self.filterName()) {
                 var organizationTreeViewModel = $(document).data("treeViewModel");
-                organizationTreeViewModel.search(self.filterName());                
+                organizationTreeViewModel.search(self.filterName());
                 self.eventClick_hideFilter();
                 $("#cleanFilterBlock").show();
                 $("#linkFilterBlock").hide();
@@ -176,14 +84,7 @@ $((function (win) {
         self.cleanFilter = function (event) {
             self.filterName(null);
             self.filterCode(null);
-            self.filterCompanyNodeType(null);
             self.companyNode(null);
-            self.companyNodeTypes([]);
-            var organizationTreeViewModel = $(document).data("treeViewModel");
-            organizationTreeViewModel.employeeNameFilter(null);
-            organizationTreeViewModel.employeeCodeFilter(null);
-            organizationTreeViewModel.companyNodeTypeFilter(null);
-            organizationTreeViewModel.companyNodeFilters(null);
             $("#cleanFilterBlock").hide();
             $("#linkFilterBlock").show();
             $("#selectFilterUTR-display").val('');
@@ -200,78 +101,25 @@ $((function (win) {
             self.applyFilter();
         }
 
-        self.eventClick_hideFilter = function (event) {
-            self.showFilter(false);
-        }
-
-        self.initializeCompanyNodeTypes = function (companyNodeTypes) {
-            var cnt = $.getMainObject(companyNodeTypes);
-            if (!$.isEmptyObject(cnt)) {
-                self.companyNodeTypes(cnt.CompanyNodeTypes);
-                self.companyNodeLevelNames(cnt.CompanyNodeLevelNames);
-                if (cnt.AutoSelectFirst) self.filterCompanyNodeType(cnt.CompanyNodeTypes[0].Id);
-            }
-        }
-
         self.eventClick_viewFilter = function (event) {
-            if (self.companyNodeTypes().length == 0) {
-                var params = new Object();
-                //params.year = $.getLocationParams().Year;
-                //amplify.request("getCompanyNodeTypes", JSON.stringify(params), self.initializeCompanyNodeTypes.bind(self));
-            }
             self.showFilter(true);
-            self.showTreeTypeFilter(false);
             $("#txtFilterName").focus().select();
         };
-
-        self.eventClick_viewTreeTypeFilter = function (event) {
-            self.showFilter(false);
-            self.showTreeTypeFilter(true);
-        }
-
-        self.eventClick_hideTreeTypeFilter = function (event) {
-            self.showTreeTypeFilter(false);
-        }
-
-        self.setTreeTypeView = function (treeType, data, event) {
-            initializeConfigurationTopEdge();
-
-            var organizationTreeViewModel = $(document).data("treeViewModel");
-            organizationTreeViewModel.treeType(treeType);
-            organizationTreeViewModel.fillOrganizationDynatree();
-
-            $('#treeTypeText span').text($('span', event.currentTarget).text());
-
-            self.showTreeTypeFilter(false);
-            self.treeType(treeType);
-            self.ViewMarkerHasFocus(1);
-        }
     };
 
-    app.organizationTreeOptions = function () {
-        var self = this;
-        self.treeType = ko.observable();
-        self.employeeNameFilter = ko.observable();
-        self.employeeCodeFilter = ko.observable();
-        self.companyNodeTypeFilter = ko.observable();
-        self.companyNodeFilters = ko.observableArray();
-
+    app.OrganizationTreeOptions = function () {
+        var self = this;        
         self.minExpandLevel = 2;
         self.checkbox = ko.observable(true);
         self.selectMode = ko.observable(1);
-        self.classNames = { checkbox: "dynatree-radio" },
-            self.fx = { height: "toggle", duration: 200 };
-        self.isFolder = ko.observable(false);
-        self.icon = ko.observable(false);
-        self.autoFocus = ko.observable(false);
+        self.classNames = { checkbox: "dynatree-radio" }, self.fx = { height: "toggle", duration: 200 };
         self.onClick = function (node, event) {
             if (!node.bSelected) {
-                // cuando el evento se produce sobre el t�tulo, seleccionamos el nodo
+                // cuando el evento se produce sobre el titulo, seleccionamos el nodo
                 if (node.getEventTargetType(event) == "title")
                     node.select(true);
 
-                // cuando el evento se produce sobre el checkbox (no es ncesario select(true) porque sino lo deseleccionamos), 
-                // invocamos funci�n
+                // cuando el evento se produce sobre el checkbox (no es necesario select(true) porque sino lo deseleccionamos), invocamos función
                 if (node.getEventTargetType(event) == "title" || node.getEventTargetType(event) == "checkbox")
                     $.EventClick_OrganizationTreeNode(node);
             } else {
@@ -284,16 +132,24 @@ $((function (win) {
                 $(selectNode).addClass("topsLevelNodes");
             }
         };
-        self.getFilters = function () {
-            return {
-                TreeType: self.treeType(),
-                EmployeeName: self.employeeNameFilter(),
-                EmployeeCode: self.employeeCodeFilter(),
-                CompanyNodeType: self.companyNodeTypeFilter(),
-                CompanyNode: self.companyNodeFilters()
-            };
+    };
+
+    app.OrganizationTree = function (filter) {
+        var self = this;
+        self.filter = filter;
+        self.organizationTreeDynatreeId = ko.observable("#organizationTreeDynatree");                
+        self.treeOptions = ko.observable(new app.OrganizationTreeOptions());
+
+        self.selectedNodes = function () {
+            return $(self.organizationTreeDynatreeId()).dynatree("getSelectedNodes");
+        }        
+
+        self.run = function () {
+            var selectedNode = self.selectedNodes();
+            $.EventClick_OrganizationTreeNode(selectedNode[0]);
         }
-        self.toDynatreeNodes = function (jsonNodes, parent) {
+
+        self.jsonNodesToDynatreeNodes = function (jsonNodes, parent) {
             var res = [];
             for (var i = 0, l = jsonNodes.length; i < l; i++) {
                 var e = jsonNodes[i];
@@ -308,61 +164,21 @@ $((function (win) {
                 if (e.children && e.children.length) {
                     if (jsonNodes.length == 1)
                         treeNode.expand = false;
-                    treeNode.children = self.toDynatreeNodes(e.children, treeNode);
+                    treeNode.children = self.jsonNodesToDynatreeNodes(e.children, treeNode);
                 }
 
-                treeNode.expand = false; //treeNode.children && treeNode.children.length > 0;
-
+                treeNode.expand = false;
                 res.push(treeNode);
             }
             return res;
         };
-    };
-
-    app.OrganizationTree = function (filter) {
-        var self = this;
-
-        self.filter = filter;
-        self.organizationTreeDynatreeId = ko.observable("#organizationTreeDynatree");
-        self.initialized = ko.observable(false);
-        self.items = ko.observableArray();
-        self.treeType = ko.observable("Organization");
-        self.treeOptions = ko.observable(new app.organizationTreeOptions());
-
-        //Filters
-        self.employeeNameFilter = ko.observable(null);
-        self.employeeCodeFilter = ko.observable(null);
-        self.companyNodeTypeFilter = ko.observable(null);
-        self.companyNodeFilters = ko.observableArray(null);
-
-        self.getFilters = function () {
-            return {
-                TreeType: self.treeType() || "Organization",
-                EmployeeName: self.employeeNameFilter() || "",
-                EmployeeCode: self.employeeCodeFilter() || "",
-                CompanyNodeType: self.companyNodeTypeFilter() || "",
-                CompanyNode: self.companyNodeFilters() || []
-            };
-        }
-
-        self.run = function () {
-            var selectedNode = self.selectedNodes();
-            $.EventClick_OrganizationTreeNode(selectedNode[0]);
-        }
-
+        
         self.fillOrganizationDynatree = function () {
-            //Init tree options:
-            self.treeOptions().treeType(self.treeType());
-            self.treeOptions().employeeNameFilter(self.employeeNameFilter() || '');
-            self.treeOptions().employeeCodeFilter(self.employeeCodeFilter() || '');
-            self.treeOptions().companyNodeTypeFilter(self.companyNodeTypeFilter() || '');
-            self.treeOptions().companyNodeFilters(self.companyNodeFilters());
             self.destroyTree();
-
             if (!$.isEmptyObject(globalVar.organizationData)) {
                 var options = ko.mapping.toJS(self.treeOptions());
-                var jsonNodes = globalVar.organizationData; //jQuery.parseJSON(treeOrganizationData);
-                options.children = self.treeOptions().toDynatreeNodes(jsonNodes);
+                var jsonNodes = globalVar.organizationData;
+                options.children = self.jsonNodesToDynatreeNodes(jsonNodes);
                 $(self.organizationTreeDynatreeId()).dynatree(options);
                 return true;
             } else {
@@ -370,38 +186,8 @@ $((function (win) {
             }
         }
 
-        self.selectedNodes = function () {
-            return $(self.organizationTreeDynatreeId()).dynatree("getSelectedNodes");
-        }
-
         self.destroyTree = function () {
             return $(self.organizationTreeDynatreeId()).dynatree("destroy");
-        }
-
-        self.setState = function (state) {
-            state = jQuery.parseJSON(state);
-            var jsonNodes = state && state.Nodes;
-            if (jsonNodes) {
-                var options = ko.mapping.toJS(self.treeOptions());
-                options.children = self.treeOptions().toDynatreeNodes(jsonNodes);
-                self.destroyTree();
-                $(self.organizationTreeDynatreeId()).dynatree(options);
-            }
-            if (state && state.Filters) {
-                var f = state.Filters;
-                if (!f.EmployeeName && !f.EmployeeCode && !f.CompanyNodeType && !f.CompanyNode) {
-                    self.filter.cleanFilter();
-                    self.treeOptions().treeType(self.treeType());
-                    self.treeOptions().employeeNameFilter(self.employeeNameFilter() || '');
-                    self.treeOptions().employeeCodeFilter(self.employeeCodeFilter() || '');
-                    self.treeOptions().companyNodeTypeFilter(self.companyNodeTypeFilter() || '');
-                    self.treeOptions().companyNodeFilters(self.companyNodeFilters());
-                }
-            }
-        }
-
-        self.DeactivateAllNodes = function () {
-            $(self.organizationTreeDynatreeId() + " span").removeClass("dynatree-active");
         }
 
         self.seekAndSelectNode = function (nodeId, nodeType) {
@@ -418,101 +204,9 @@ $((function (win) {
             return false;
         };
 
-        self.removeSelectedNodes = function () {
-            var nodes;
-            while ((nodes = self.selectedNodes()).length > 0) {
-                nodes[0].remove();
-            }
+        self.search = function (searchPattern) {
+            $(self.organizationTreeDynatreeId()).dynatree("getRoot").search(searchPattern);
         }
 
-        self.search = function (searchPattern){            
-            $(self.organizationTreeDynatreeId()).dynatree("getRoot").search(searchPattern);                                    
-        }
-        
     };
 })(window));
-
-// ## Funciones de utilidad sobre el árbol
-
-// Obtiene los nodos seleccionados del árbol
-$.getSelectedCompanyNodesFromTree = function () {
-    var companyNodes = [];
-    var organizationTreeViewModel = $(document).data("treeViewModel");
-    if (!$.isEmptyObject(organizationTreeViewModel)) {
-        if ($.isFunction(organizationTreeViewModel.selectedNodes)) {
-            var selectedNodes = organizationTreeViewModel.selectedNodes();
-            if (!$.isEmptyObject(selectedNodes) || selectedNodes.length > 0) {
-                // Nos quedamos con el ultimo nivel que esta marcado
-                $(selectedNodes).each(function (i) {
-                    if (selectedNodes[i].childList == null)
-                        companyNodes.push(selectedNodes[i]);
-                    else {
-                        var hasChildrenSelected = false;
-                        $(selectedNodes[i].childList).each(function (j) {
-                            if (selectedNodes[i].childList[j].isSelected() == true) {
-                                hasChildrenSelected = true;
-                                return;
-                            }
-                        });
-                        if (hasChildrenSelected == false)
-                            companyNodes.push(selectedNodes[i]);
-                    }
-                });
-            } else  // has not nodes selected
-                return null;
-        } else // selected nodes is not a function
-            return null;
-    } else // organizationTreeViewModel has not properties
-        return null;
-    return companyNodes;
-}
-
-// Obtiene los filtros del árbol
-$.getFiltersFromTree = function () {
-    var organizationTreeViewModel = $(document).data("treeViewModel");
-    return (!$.isEmptyObject(organizationTreeViewModel) && $.isFunction(organizationTreeViewModel.getFilters)) ? organizationTreeViewModel.getFilters() : {};
-};
-
-// Desmarca los nodos del árbol
-$.deselectAllNodes = function (tree) {
-    $("#organizationTreeDynatree span").removeClass("dynatree-active");
-    // if (tree.dynatree("getRoot").visit != undefined)
-    // tree.dynatree("getRoot").visit(function (node) {			
-    // node.data.removeClass("dynatree-active");
-    // //node.expand(false);
-    // });
-
-    return false;
-};
-
-// Recarga el árbol de la organización
-$.reloadOrganizationTree = function () {
-    var organizationTreeViewModel = $(document).data("treeViewModel");
-    organizationTreeViewModel.treeType("Organization");
-    organizationTreeViewModel.fillOrganizationDynatree();
-};
-
-$.setOrganizationTreeState = function (state) {
-    var organizationTreeViewModel = $(document).data("treeViewModel");
-    organizationTreeViewModel.setState(state);
-}
-
-$.removeOrganizationTreeSelectedNodes = function () {
-    var organizationTreeViewModel = $(document).data("treeViewModel");
-    organizationTreeViewModel.removeSelectedNodes();
-}
-
-var ENTER_KEY = 13;
-ko.bindingHandlers.executeOnEnter = {
-    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-        var allBindings = allBindingsAccessor();
-        $(element).keypress(function (event) {
-            var keyCode = (event.which ? event.which : event.keyCode);
-            if (keyCode === ENTER_KEY) {
-                allBindings.executeOnEnter.call(viewModel);
-                return false;
-            }
-            return true;
-        });
-    }
-};

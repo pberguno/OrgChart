@@ -1,3 +1,5 @@
+var ENTER_KEY = 13;
+
 /*
 * Devuelve el propio objeto, cuyo Id se corresponde con val, y todos sus descendientes.
 */
@@ -126,6 +128,23 @@ function PaintException(message) {
 * Elimina los asistentes que pudieran mostrarse en segundo nivel del organigrama.
 * Sólo deben aparecer los del primer nivel.
 */
-function HideAssistantSecondLevels() {
+function hideAssistantSecondLevels() {
 	$('.jOrgChart').find('table tbody tr td.node-container div.assistant').remove();
 }
+
+/* 
+* Permite definir el manejador KnockOut executeOnEnter sobre los controles en HTML.
+*/
+ko.bindingHandlers.executeOnEnter = {
+    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+        var allBindings = allBindingsAccessor();
+        $(element).keypress(function (event) {
+            var keyCode = (event.which ? event.which : event.keyCode);
+            if (keyCode === ENTER_KEY) {
+                allBindings.executeOnEnter.call(viewModel);
+                return false;
+            }
+            return true;
+        });
+    }
+};
