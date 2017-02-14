@@ -95,6 +95,7 @@ $((function (win) {
             self.eventClick_hideFilter();
             var organizationTreeViewModel = $(document).data("treeViewModel");
             organizationTreeViewModel.fillOrganizationDynatree();
+            organizationTreeViewModel.run();
         }
 
         self.eventKeyUp_filterName = function () {
