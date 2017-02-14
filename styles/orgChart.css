@@ -2,10 +2,10 @@
 /* Ficha personal del empleado. */
 #wrapper{margin:0 auto; width:50%; padding-top:10px;}
 .self {width:500px; border:1px solid;}
-.self ul li.ad {background-image:url(../img/OrganizationTree/icn-home.gif);}
-.self ul li.mail {background-image:url(../img/OrganizationTree/icn-mail.gif);}
-.self ul li.tel {background-image:url(../img/OrganizationTree/icn-tel.gif);}
-.self ul li.web {background-image:url(../img/OrganizationTree/icn-web.gif);}
+.self ul li.ad {background-image:url(../img/orgChart/icn-home.gif);}
+.self ul li.mail {background-image:url(../img/orgChart/icn-mail.gif);}
+.self ul li.tel {background-image:url(../img/orgChart/icn-tel.gif);}
+.self ul li.web {background-image:url(../img/orgChart/icn-web.gif);}
 .self ul li {background-repeat: no-repeat; padding-left:26px; background-position: 0 .1em; height:25px; display:block; margin-top:-2px;}
 .self h1  {padding-left:26px;	font-size:42px;	color:#1b4491; margin-bottom:3px; clear:both;}
 .self h1 span {font-size:21px; display:block; color:#1b4491; margin-top:-5px;}
