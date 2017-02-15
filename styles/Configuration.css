@@ -11,35 +11,36 @@
 
 /* Captura de posibles errores */
 .errorSectionTitle{width:95%;float:left;padding:12px 0 0 5px;margin-left:12px;border-bottom:3px solid #f0f0f0;}
-.errorTitle{width:80%;float:left;font:bold 12px Arial;color:red; padding-top:10px;}
+.errorTitle{width:80%;float:left;font:bold 12px roboto_regular;color:red; padding-top:10px;}
 
 /* <ARBOL_ORGANIZACION> */
     #organizationTree{clear:both;float:left;width:300px;}
     .organizationTree{float:left;width:300px;height:420px;margin:-12px 0px 2px 1px;background:#d6dee3 url("../img/orgChart/organizationMarker.png") repeat-x 0 0;}
-    .organizationTreeContent{padding:20px 1px 1px 0px;font-family:Arial;font-size:12px;}
-    .organizationTreeContent a{ font-family:Arial;font-size:12px; color: #000; }
-    ul.dynatree-container {height:99%; border: none; background-color: rgb(214, 222, 227); overflow-y: scroll; white-space: normal; }
+    .organizationTreeContent{padding:20px 1px 1px 0px;font-family:roboto_regular;font-size:12px;}
+    .organizationTreeContent a{ font-family:roboto_regular;font-size:12px; color: #000; }
+    ul.dynatree-container {height:99%; border: none; background-color: rgb(214, 222, 227); overflow-y: auto; white-space: normal; }
     ul.dynatree-container li { background-image: none; }
     span.dynatree-connector { background-image: none; }
     span.dynatree-icon { display: none; }
-    .organizationTree ul.dynatree-container a { font-family:Arial;font-size:12px;color:#000;background-color: rgb(214, 222, 227); width: 75%;cursor:default; }
+    .organizationTree ul.dynatree-container a { font-family:roboto_regular;font-size:12px;color:#000;background-color: rgb(214, 222, 227); width: 75%;cursor:default; }
     .organizationTree ul.dynatree-container a:hover{ background-color: rgb(214, 222, 227); }
-    .topsLevelNodes {  font-family:Arial;font-size:12px;color:#000; font-weight: bold; }
+    .topsLevelNodes {  font-family:roboto_regular;font-size:12px;color:#000; font-weight: bold; }
     .organizationChartContent{float:left; min-width:75%;border:1px solid #e2e3e6;margin:-12px -400px 0px 10px; min-height: 500px;}
 
     /*<FILTRADO_ARBOL>*/
+    .noMatchInTree{margin:35px 0 0 10px; font-style: italic; font-size: 14px;}
     .link{cursor:pointer;}
     .showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:110px;top:35px;background:transparent url('../img/orgChart/topfilterBackground.png') no-repeat 0 0;}
     .showFilter .filterControls{width:94%; margin-top:10px; float:left;border-left:1px solid #909090; border-right:1px solid #909090; background-color: #ffffff; padding: 0 0 10px 10px;}
     .showFilter .cField{padding-top:12px;}
-    .showFilter .cField input{width:177px;font:12px Arial;border:1px solid #abadb3; }
+    .showFilter .cField input{width:177px;font:12px roboto_regular;border:1px solid #abadb3; }
     .showFilter .cBoton{width: 100%; height: 44px; padding-top:12px;text-align:center; float:left;background:transparent url('../img/orgChart/bottomfilterBackground.png') no-repeat 0 0;}
-    .showFilter .button{float:right;padding:5px 0px 5px 0;width:74px;margin:4px 0px;font:11px Arial;color:#fff;text-align:center;margin-right:8px;background: transparent url("../img/orgChart/button.gif") no-repeat;cursor:hand;cursor:pointer;}
-    .showFilter .label{ width: 80%; font:bold 11px Arial; }
-    .showFilter .cField .label{ width:80%; font: bold 12px Arial; }
+    .showFilter .button{float:right;padding:5px 0px 5px 0;width:74px;margin:4px 0px;font:11px roboto_regular;color:#fff;text-align:center;margin-right:8px;background: transparent url("../img/orgChart/button.gif") no-repeat;cursor:hand;cursor:pointer;}
+    .showFilter .label{ width: 80%; font:bold 11px roboto_regular; }
+    .showFilter .cField .label{ width:80%; font: bold 12px roboto_regular; }
     .closeButton{padding:8px 5px 0 0;cursor:hand;cursor:pointer;}
     #cleanFilterBlock img{ margin-left: 4px; cursor: pointer; }
-    .configurationTopedge{float:left;width:300px;padding:8px 490px 0 0;font:bold 13px Arial;color:#4e83ae;position:relative;margin-left:0px;}
+    .configurationTopedge{float:left;width:300px;padding:8px 490px 0 0;font:bold 13px roboto_regular;color:#4e83ae;position:relative;margin-left:0px;}
     .configurationTopedge .active{color:#222425;height:30px;background: transparent url("../img/orgChart/selectedTree.png") no-repeat 38% 100%; z-index:2000; float:left;}
     .closeLinkFilter{ color: #ff0000}    
     .lastConfigurationBlock{ float: right; }

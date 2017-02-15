@@ -69,11 +69,16 @@ $((function (win) {
 
         self.applyFilter = function () {
             if (self.filterName()) {
+                $(".noMatchInTree").remove();
                 var organizationTreeViewModel = $(document).data("treeViewModel");
                 organizationTreeViewModel.search(self.filterName());
                 self.eventClick_hideFilter();
                 $("#cleanFilterBlock").show();
                 $("#linkFilterBlock").hide();
+                // Si no se han encontrado datos, lo indicamos
+                if ($('#organizationTreeDynatree li').is(':visible') == false) {                    
+                    $('.dynatree-container').prepend('<span class="noMatchInTree">No se han encontrado datos</span>');
+                }
             }
         }
 
@@ -88,6 +93,7 @@ $((function (win) {
             $("#cleanFilterBlock").hide();
             $("#linkFilterBlock").show();
             $("#selectFilterUTR-display").val('');
+            $(".noMatchInTree").remove();
         }
 
         self.eventClick_cleanFilter = function (event) {
@@ -109,7 +115,7 @@ $((function (win) {
     };
 
     app.OrganizationTreeOptions = function () {
-        var self = this;        
+        var self = this;
         self.minExpandLevel = 2;
         self.checkbox = ko.observable(true);
         self.selectMode = ko.observable(1);
@@ -138,12 +144,12 @@ $((function (win) {
     app.OrganizationTree = function (filter) {
         var self = this;
         self.filter = filter;
-        self.organizationTreeDynatreeId = ko.observable("#organizationTreeDynatree");                
+        self.organizationTreeDynatreeId = ko.observable("#organizationTreeDynatree");
         self.treeOptions = ko.observable(new app.OrganizationTreeOptions());
 
         self.selectedNodes = function () {
             return $(self.organizationTreeDynatreeId()).dynatree("getSelectedNodes");
-        }        
+        }
 
         self.run = function () {
             var selectedNode = self.selectedNodes();
@@ -173,7 +179,7 @@ $((function (win) {
             }
             return res;
         };
-        
+
         self.fillOrganizationDynatree = function () {
             self.destroyTree();
             if (!$.isEmptyObject(globalVar.organizationData)) {
