@@ -25,7 +25,7 @@
     .organizationTree ul.dynatree-container a { font-family:roboto_regular;font-size:12px;color:#000;background-color: rgb(214, 222, 227); width: 75%;cursor:default; }
     .organizationTree ul.dynatree-container a:hover{ background-color: rgb(214, 222, 227); }
     .topsLevelNodes {  font-family:roboto_regular;font-size:12px;color:#000; font-weight: bold; }
-    .organizationChartContent{float:left; min-width:75%;border:1px solid #e2e3e6;margin:-12px -400px 0px 10px; min-height: 500px;}
+    .organizationChartContent{float:left; min-width:75%;border:1px solid #e2e3e6;margin:-12px -400px 0px 10px; min-height: 500px;max-width:500px;overflow-x:auto;}
 
     /*<FILTRADO_ARBOL>*/
     .noMatchInTree{margin:35px 0 0 10px; font-style: italic; font-size: 14px;}
