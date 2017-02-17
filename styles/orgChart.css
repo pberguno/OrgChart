@@ -22,14 +22,16 @@
 .jOrgChart .right {border-left : 2px solid black;}
 
 /* Nivel nodo */
-.jOrgChart td {text-align : center;vertical-align : top;padding : 0;}
+.jOrgChart td {text-align:center; vertical-align:middle; padding:0;}
 
 /* Nodo */
-.jOrgChart .node {background-color : #35363B; display : inline-block; width : 96px; height : 60px; z-index : 10; margin : 0 2px;}
+.jOrgChart .node {background-color : #35363B; display : inline-block; width : 96px; height : 60px; z-index : 10; margin : 0 15px;}
 .drop-hover {border-style : solid !important;border-color : #E05E00 !important;}
-.jOrgChart .node {margin-left: 20px; margin-right: 20px; background-color: white; border: thin solid black; height: 80px; width: 150px; border-radius: 10px; box-shadow: 0 0 5px 1px #999; padding-top:20px;}
-.jOrgChart .node span {line-height: 25px; vertical-align: middle; text-align: center; font-size:15px;}
-.jOrgChart .node span[data-id] {font-weight: bold; color: #ffae00;}
+.jOrgChart .node {margin-left: 20px; background-color: white; height: 140px; width: 170px; border-radius: 50%; box-shadow: 0 0 5px 1px #999; padding-top:20px;position:relative;}
+.jOrgChart .node span {line-height: 25px; vertical-align: middle; text-align: center; font-size:15px;text-transform: uppercase;}
+
+.jOrgChart .node span[data-id] {color: #ffae00;}
+br {line-height: 1.5em}
 .jOrgChart > table > tbody > tr.node-cells .node span[data-id] {color: black;}
 .jOrgChart .node img {float: left; margin-left: -20px; max-height: 52px; max-width: 42px;}
 .jOrgChart .chartline {width: 2px;}
@@ -38,13 +40,20 @@
 /* Puestos de trabajo */
 .assistant{position: absolute; top:55px; border-radius: 35px; box-shadow: 0 0 10px 1px #999; background-color: #fff; margin-left: 200px; width:200px; border-bottom: 1px solid;}
 .positionType{color:#ffae00 !important; line-height: 20px !important;}
-.manager, .assistant{color:black;}
-.assistantLiteral{font-style: italic;}
+.manager{color:white;} 
+.manager span, .assistantEmployee{text-transform:none !important;}
+
+.assistant{color:#ffae00;}
+.assistantLiteral{color:#333131;}
 
 /* Nodos de compañía con hijos. */
-.companyNodeWithChildren{background-color: rgba(255, 174, 0, 0.6) !important;}
+.companyNodeWithChildren{background-color: #ffa500 !important; } /* rgba(255, 174, 0, 0.6) !important;}*/
 .companyNodeWithChildren .companyNode{color:#243032 !important;}
+
 
 /* Captura de posibles errores */
 .errorSectionTitle{width:95%;float:left;padding:12px 0 0 5px;margin-left:12px;border-bottom:3px solid #f0f0f0;}
 .errorTitle{width:80%;float:left;font:bold 12px roboto_regular;color:red; padding-top:10px;}
+
+
+div.jOrgChart>table>tbody>tr:last-child div.companyNodeWithChildren { background:#ff0000; }

@@ -54,15 +54,19 @@ function transformNodeToHtml(data, isSub, lonelyEmployee) {
 		lonelyEmployee = false;
 		html += '<li>';
 		if (typeof (data[i].children) === 'object') {
+			html += '<br/>';
 			if (isSub && data[i].children.length) {
 				html += '<span class="companyNode" data-id="' + data[i].Id + '" data-type="' + data[i].NodeType + '">' + data[i].name + '</span>';
 				if (data[i].children.length == 1)
 					lonelyEmployee = true;
-			} else {
-				if (data[i].NodeType == "Employee")
-					html += '<span class="positionType" data-id="' + data[i].Id + '" data-type="' + data[i].NodeType + '">' + data[i].PositionTypeName + '</span><br><span>' + data[i].name + '</span>';
-				else {
-					html += '<span class="companyNode" data-type="' + data[i].NodeType + '">' + data[i].name + '</span>';
+			} else {				
+				if (data[i].NodeType == "Employee") {
+					html += '<span class="positionType" data-id="' + data[i].Id + '" data-type="' + data[i].NodeType + '">';
+					html += data[i].PositionTypeName + '</span><br>';
+					html += '<span>' + data[i].name + '</span>';
+					
+				} else {
+					html += '<span class="companyNode" data-id="' + data[i].Id + '"data-type="' + data[i].NodeType + '">' + data[i].name + '</span>';
 					if (data[i].children.length == 1)
 						lonelyEmployee = true;
 				}
@@ -109,7 +113,7 @@ function customizeHtml(html) {
 		$(this).parent().find('span:last')[0]
 		var assistantText = assistant.find('span:last').text();
 
-		assistantCompanyNode.html(assistantCompanyNodeText + "<br />" + "<div class='assistant'><span class='assistantLiteral'>Assistant</span><br/><span>" + assistantText + "</span></div>");
+		assistantCompanyNode.html(assistantCompanyNodeText + "<br />" + "<div class='assistant'><span class='assistantLiteral'>Assistant</span><br/><span class='assistantEmployee'>" + assistantText + "</span></div>");
 		assistant.remove();
 	});
 
@@ -136,15 +140,15 @@ function hideAssistantSecondLevels() {
 * Permite definir el manejador KnockOut executeOnEnter sobre los controles en HTML.
 */
 ko.bindingHandlers.executeOnEnter = {
-    init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-        var allBindings = allBindingsAccessor();
-        $(element).keypress(function (event) {
-            var keyCode = (event.which ? event.which : event.keyCode);
-            if (keyCode === ENTER_KEY) {
-                allBindings.executeOnEnter.call(viewModel);
-                return false;
-            }
-            return true;
-        });
-    }
+	init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+		var allBindings = allBindingsAccessor();
+		$(element).keypress(function (event) {
+			var keyCode = (event.which ? event.which : event.keyCode);
+			if (keyCode === ENTER_KEY) {
+				allBindings.executeOnEnter.call(viewModel);
+				return false;
+			}
+			return true;
+		});
+	}
 };
