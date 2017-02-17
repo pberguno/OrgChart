@@ -45,3 +45,6 @@
 .companyNodeWithChildren{background-color: rgba(255, 174, 0, 0.6) !important;}
 .companyNodeWithChildren .companyNode{color:#243032 !important;}
 
+/* Captura de posibles errores */
+.errorSectionTitle{width:95%;float:left;padding:12px 0 0 5px;margin-left:12px;border-bottom:3px solid #f0f0f0;}
+.errorTitle{width:80%;float:left;font:bold 12px roboto_regular;color:red; padding-top:10px;}
