@@ -60,7 +60,7 @@ function transformNodeToHtml(data, isSub, lonelyEmployee) {
 					lonelyEmployee = true;
 			} else {
 				if (data[i].NodeType == "Employee")
-					html += '<span class="positionType">' + data[i].PositionTypeName + '</span><br><span data-type="' + data[i].NodeType + '">' + data[i].name + '</span>';
+					html += '<span class="positionType" data-id="' + data[i].Id + '" data-type="' + data[i].NodeType + '">' + data[i].PositionTypeName + '</span><br><span>' + data[i].name + '</span>';
 				else {
 					html += '<span class="companyNode" data-type="' + data[i].NodeType + '">' + data[i].name + '</span>';
 					if (data[i].children.length == 1)

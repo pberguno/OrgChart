@@ -38,25 +38,28 @@ $((function (win) {
             $nodeDiv = $(nodeDiv);
             var id = $nodeDiv.find("span").attr("data-id");
             var type = $nodeDiv.find("span").attr("data-type");
-            self.tree.seekAndSelectNode(id, type);
+            self.tree.seekAndSelectNode(id, type); // marcamos nodo del árbol
 
             if (id) {
-                var target = $currentChart.find('li span[data-id="' + id + '"]');
+                if (type == "Employee") {
+                    $.EventClick_OrganizationTreeNode(null);
+                } else {
+                    var target = $currentChart.find('li span[data-id="' + id + '"][data-type="' + type + '"]');                                 
+                    if (target) {
+                        $currentChart = $("<ul>").append(target.parent("li")).clone();
 
-                if (target) {
-                    $currentChart = $("<ul>").append(target.parent("li")).clone();
+                        $("div.container").fadeOut(200, function () {
+                            $("div.container").html("");
+                            $currentChart.jOrgChart(opts);
+                            hideAssistantSecondLevels();
 
-                    $("div.container").fadeOut(200, function () {
-                        $("div.container").html("");
-                        $currentChart.jOrgChart(opts);
-                        hideAssistantSecondLevels();
-
-                        $("div.container").fadeIn(200);
-                        $("div.container div.node:not(:first)").click(function () {
-                            var $this = $(this);
-                            self.handleClick($this);
-                        });
-                    })
+                            $("div.container").fadeIn(200);
+                            $("div.container div.node:not(:first)").click(function () {
+                                var $this = $(this);
+                                self.handleClick($this);
+                            });
+                        })
+                    }
                 }
             }
         }

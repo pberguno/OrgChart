@@ -72,19 +72,17 @@
                 $nodeDiv.click(function () {
                     var $this = $(this);
                     var $tr = $this.closest("tr");
+                    $this.css('cursor', 'hand');
 
-                    if ($tr.hasClass('contracted')) {
-                        $this.css('cursor', 'hand');                        
+                    if ($tr.hasClass('contracted')) {                        
                         $this.addClass('companyNodeWithChildren');
-
                         $tr.removeClass('contracted').addClass('expanded');
                         $tr.nextAll("tr").css('visibility', '');
 
                         // Update the <li> appropriately so that if the tree redraws collapsed/non-collapsed nodes
                         // maintain their appearance
                         $node.removeClass('collapsed');
-                    } else {
-                        $this.css('cursor', 'hand');          
+                    } else {                    
                         $this.addClass('companyNodeWithChildren');
                         $tr.removeClass('expanded').addClass('contracted');
                         $tr.nextAll("tr").css('visibility', 'hidden');
@@ -98,10 +96,10 @@
         $nodeCell.append($nodeDiv);
         $nodeRow.append($nodeCell);
         $tbody.append($nodeRow);
-
+        $nodeDiv.css('cursor', 'hand');
+        
         if ($childNodes.length > 0) {
-            // if it can be expanded then change the cursor
-            $nodeDiv.css('cursor', 'hand');
+            // if it can be expanded then change the cursor            
             $nodeDiv.addClass('companyNodeWithChildren');
 
             // recurse until leaves found (-1) or to the level specified
@@ -142,10 +140,7 @@
 
             }
             $tbody.append($childNodesRow);
-        }else if ($childNodes.length == 0){
-            if ($node.children()[0].className == "companyNode")
-                $nodeDiv.css('cursor', 'hand');
-        }
+        }         
 
         // any classes on the LI element get copied to the relevant node in the tree
         // apart from the special 'collapsed' class, which collapses the sub-tree at this point

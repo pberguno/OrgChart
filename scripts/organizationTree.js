@@ -24,17 +24,22 @@ $(document).ready(function () {
 
     // Evento asociado al click sobre un nodo del arbol de la organización
     $.EventClick_OrganizationTreeNode = function (selectedNode) {
-        // asignamos el resaltado sobre el nodo del árbol seleccionado.        
-        $("#organizationTreeDynatree span").removeClass("dynatree-active");
-        selectedNode.span.className = selectedNode.span.className + " dynatree-active";
+        if (selectedNode) {
+            // asignamos el resaltado sobre el nodo del árbol seleccionado.        
+            $("#organizationTreeDynatree span").removeClass("dynatree-active");
+            selectedNode.span.className = selectedNode.span.className + " dynatree-active";
 
-        var node = new Object();
-        node.Id = selectedNode.data.id;
-        node.NodeType = (selectedNode.data.nodeType == null ? "Employee" : selectedNode.data.nodeType);
-        var hierarchicalObjects = getHierarchicalObjects(globalVar.organizationData, 'Id', node.Id, node.NodeType);
-        var html = transformNodeToHtml(hierarchicalObjects, false, false);
-        var customHtml = customizeHtml(html);
-        viewModelOrganizationChart.init_chart(customHtml);
+            var node = new Object();
+            node.Id = selectedNode.data.id;
+            node.NodeType = (selectedNode.data.nodeType == null ? "Employee" : selectedNode.data.nodeType);
+            var hierarchicalObjects = getHierarchicalObjects(globalVar.organizationData, 'Id', node.Id, node.NodeType);
+            var html = transformNodeToHtml(hierarchicalObjects, false, false);
+            var customHtml = customizeHtml(html);
+            viewModelOrganizationChart.init_chart(customHtml);
+        } else {
+            // si el parámetro selectedNode viene null, invocamos run(), que accede al nodo seleccionado en el árbol (siempre habrá uno).
+            viewModelOrganizationTree.run();
+        }
     }
 
     var dataLoaded = viewModelOrganizationTree.fillOrganizationDynatree();
@@ -76,7 +81,7 @@ $((function (win) {
                 $("#cleanFilterBlock").show();
                 $("#linkFilterBlock").hide();
                 // Si no se han encontrado datos, lo indicamos
-                if ($('#organizationTreeDynatree li').is(':visible') == false) {                    
+                if ($('#organizationTreeDynatree li').is(':visible') == false) {
                     $('.dynatree-container').prepend('<span class="noMatchInTree">No se han encontrado datos</span>');
                 }
             }
@@ -205,10 +210,9 @@ $((function (win) {
                         node.select(true);
                         node.makeVisible();
                         node.span.className = node.span.className + " dynatree-active";
+                        return false; // Stop iteration, if fn() returns false.
                     }
                 });
-
-            return false;
         };
 
         self.search = function (searchPattern) {
