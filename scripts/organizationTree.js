@@ -117,6 +117,12 @@ $((function (win) {
             self.showFilter(true);
             $("#txtFilterName").focus().select();
         };
+
+        self.eventClick_organization = function (event) {
+            var organizationTreeViewModel = $(document).data("treeViewModel");
+            organizationTreeViewModel.collapseAll();
+            organizationTreeViewModel.run();
+        };
     };
 
     app.OrganizationTreeOptions = function () {
@@ -172,6 +178,17 @@ $((function (win) {
 
         self.selectedNodes = function () {
             return $(self.organizationTreeDynatreeId()).dynatree("getSelectedNodes");
+        }
+
+        self.collapseAll = function () {
+            $("#organizationTreeDynatree span").removeClass("dynatree-active");
+            $(self.organizationTreeDynatreeId()).dynatree("getRoot").visit(function (node) {
+                if (node.data.nodeType == "RootNode"){
+                    node.span.className = node.span.className + " dynatree-active";
+                    node.select(true);
+                }                    
+                node.expand(false);
+            });
         }
 
         self.run = function () {

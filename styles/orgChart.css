@@ -42,12 +42,15 @@ br {line-height: 2em}
 /* Puestos de trabajo */
 .assistant{position: absolute; top:25px; border-radius: 50%; box-shadow: 0 0 2px 1px #999; background-color: #fff; margin-left: 200px; width:130px; height:120px; border-bottom: 1px solid;}
 .positionType{color:#ffae00 !important; line-height: 20px !important;}
-.manager span, .assistantEmployee{text-transform:none !important;color:#ffae00 !important;}
+.manager span{text-transform:none !important;color:#ffae00 !important;}
+.assistantEmployee{text-transform:none !important;color:#ffae00 !important;}
+.employee{text-transform:none !important;}
 .assistantLiteral{color:#333131;}
 
 /* Nodos de compañía con hijos. */
 .companyNodeWithChildren{background-color: #ffa500 !important; }
 div.jOrgChart>table>tbody>tr:last-child .companyNodeWithChildren { background-color:#f1f1f0 !important; } /* sobreescribimos color para elementos 2º nivel */
+div.jOrgChart>table>tbody>tr:first-child .manager span { color:#f1f1f0 !important; } /* sobreescribimos color para elementos 2º nivel */
 
 /* Captura de posibles errores */
 .errorSectionTitle{width:95%;float:left;padding:12px 0 0 5px;margin-left:12px;border-bottom:3px solid #f0f0f0;}

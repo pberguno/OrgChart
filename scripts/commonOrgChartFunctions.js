@@ -65,7 +65,7 @@ function transformNodeToHtml(data, isSub, lonelyEmployee) {
 					html += '<div class="overlayImg"><img src="img/orgChart/employeeIcon.png"></div>';
 					html += '<span class="positionType" data-id="' + data[i].Id + '" data-type="' + data[i].NodeType + '">';
 					html += data[i].PositionTypeName + '</span><br>';
-					html += '<span>' + data[i].name + '</span>';
+					html += '<span class="employee">' + data[i].name + '</span>';
 					
 				} else {					
 					html += '<span class="companyNode" data-id="' + data[i].Id + '"data-type="' + data[i].NodeType + '">' + data[i].name + '</span>';
@@ -140,8 +140,9 @@ function PaintException(message) {
 */
 function orgChartPostProcessing() {
 	$('.jOrgChart').find('table tbody tr td.node-container div.assistant').remove();
-	$('.jOrgChart').find('table tr:first td.node-cell .overlayImg').remove();
+	$('.jOrgChart').find('table tr:first td.node-cell .overlayImg').remove();	
 	$('span.positionType').parent().css('box-shadow', '0 0 2px 1px #ffae00');
+//	$('.jOrgChart').find('table tr:first td.node-cell .manager').css('color', 'white !important');
 }
 
 /* 
