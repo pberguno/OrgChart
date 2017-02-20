@@ -44,14 +44,15 @@
 			</div>
 		</div>
 		<div class="configurationTopedge">
-			<div class="firstConfigurationBlock active" id="treeTypeText">
+			<div class="firstConfigurationBlock active">
 				<span id="organizationMarker" class="link">Organizaci&oacute;n</span>
 			</div>
 			<div class="lastConfigurationBlock">
-				<div id="linkFilterBlock" class="configurationFilterTopedge" data-bind="event:{click: eventClick_viewFilter}"><span id="linkFilter" class="linkFilter link">Filtrar</span>
+				<div id="linkFilterBlock" class="configurationFilterTopedge" data-bind="event:{click: eventClick_viewFilter}">
+					<span id="linkFilter" class="linkFilter link"><img src="img/orgChart/organizationFilter.png" alt="Filtrar" data-bind="event:{click: eventClick_cleanFilter}" /></span>
 				</div>
 				<div id="cleanFilterBlock" class="configurationFilterTopedge hidden">
-					<span id="linkFilterCleanBlock" class="closeLinkFilter link" data-bind="event:{click: eventClick_viewFilter}">Filtrar</span>
+					<span id="linkFilterCleanBlock" class="closeLinkFilter link" data-bind="event:{click: eventClick_viewFilter}"><img src="img/orgChart/organizationFilterRed.png" alt="" /></span>
 					<img src="img/orgChart/closeRed.gif" alt="" data-bind="event:{click: eventClick_cleanFilter}" />
 				</div>
 			</div>

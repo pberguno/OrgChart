@@ -140,8 +140,26 @@ $((function (win) {
             }
         };
         self.onRender = function (dtnode, selectNode) {
-            if (dtnode.getLevel() <= 2) {
-                $(selectNode).addClass("topsLevelNodes");
+            var levelNode = dtnode.getLevel();
+            switch (levelNode) {
+                case 1:
+                    $(selectNode).addClass("level1Node");
+                    break;
+                case 2:
+                    $(selectNode).addClass("level2Node");
+                    break;
+                case 3:
+                    $(selectNode).addClass("level3Node");
+                    break;
+                case 4:
+                    $(selectNode).addClass("level4Node");
+                    break;
+                case 5:
+                    $(selectNode).addClass("level5Node");
+                    break;
+                case 6:
+                    $(selectNode).addClass("level6Node");
+                    break;
             }
         };
     };

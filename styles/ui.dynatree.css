@@ -45,7 +45,7 @@ ul.dynatree-container li
 	background-image: url("vline.gif");
 	background-position: 0 0;
 	margin: 0;
-	padding: 1px 0 0 0;
+	padding: 5px 0 0 0;
 }
 /* Suppress lines for last child node */
 ul.dynatree-container li.dynatree-lastsib
@@ -77,7 +77,7 @@ span.dynatree-checkbox,
 span.dynatree-radio,
 span.dynatree-drag-helper-img,
 #dynatree-drop-marker
-{
+{	
 	width: 16px;
 	height: 16px;
 	display: inline-block; /* Required to make a span sizeable */
@@ -259,7 +259,7 @@ span.dynatree-icon /* Default icon */
 /* Remove blue color and underline from title links */
 ul.dynatree-container a
 {
-	color: black; /* inherit doesn't work on IE */
+	/*color: black;  inherit doesn't work on IE */
 	text-decoration: none;
 	vertical-align: top;
 	margin: 0px;
@@ -274,7 +274,7 @@ ul.dynatree-container a:hover
 
 span.dynatree-node a
 {
-	font-size: 10pt; /* required for IE, quirks mode */
+	/*font-size: 10pt;  required for IE, quirks mode */
 	display: inline-block; /* Better alignment, when title contains <br> */
 	padding-left: 3px;
 	padding-right: 3px; /* Otherwise italic font will be outside bounds */	
@@ -298,8 +298,8 @@ span.dynatree-selected a
 
 span.dynatree-active a
 {
-	background-color: #3169C6 !important;
-	color: white !important; /* @ IE6 */
+	/*background-color: #3169C6 !important;*/
+	color:#ffae00 !important; /* @ IE6 */	
 }
 
 /*******************************************************************************
@@ -386,23 +386,29 @@ span.custom1 a
 }
 
 /* <ARBOL_ORGANIZACION> */
-    #organizationTree{clear:both;float:left;width:300px;}
-    .organizationTree{float:left;width:300px;height:420px;margin:-12px 0px 2px 1px;background:#d6dee3 url("../img/orgChart/organizationMarker.png") repeat-x 0 0;}
+    #organizationTree{clear:both;float:left;width:300px;height:420px;margin:-12px 0px 2px 50px;border-right:2px solid #e3e3e3;}
     .organizationTreeContent{padding:20px 1px 1px 0px;font-family:roboto_regular;font-size:12px;}
     .organizationTreeContent a{ font-family:roboto_regular;font-size:12px; color: #000; }
-    ul.dynatree-container {height:99%; border: none; background-color: rgb(214, 222, 227); overflow-y: auto; white-space: normal; }
+    ul.dynatree-container {height:99%; border: none; background-color: white; overflow-y: auto; white-space: normal; }
     ul.dynatree-container li { background-image: none; }
     span.dynatree-connector { background-image: none; }
     span.dynatree-icon { display: none; }
-    .organizationTree ul.dynatree-container a { font-family:roboto_regular;font-size:12px;color:#000;background-color: rgb(214, 222, 227); width: 75%;cursor:default; }
-    .organizationTree ul.dynatree-container a:hover{ background-color: rgb(214, 222, 227); }
-    .topsLevelNodes {  font-family:roboto_regular;font-size:12px;color:#000; font-weight: bold; }
-    .organizationChartContent{float:left; min-width:75%;border:1px solid #e2e3e6;margin:-12px -400px 0px 10px; min-height: 500px;max-width:500px;overflow-x:auto;}
+    .organizationTree ul.dynatree-container a { background-color: white; width: 75%;cursor:default; }    
+	.organizationTree ul.dynatree-container a:hover{ color:#ffae00;cursor:hand; }    
+    .organizationChartContent{float:left; min-width:75%;margin:-12px -400px 0px 10px; min-height: 500px;max-width:500px;overflow-x:auto;}
+	.level1Node a{font-size:15px;color:#333131; font-weight: bold; }
+	.level2Node a{font-size:14px;color:#333131; font-weight: bold; }
+	.level3Node a{font-size:13px;color:#333131;}
+	.level4Node a{font-size:12px;color:#333131;}
+	.level5Node a{font-size:12px;color:#333131;}
+	.level6Node a{font-size:12px;color:#333131;}
+	
+
 
     /*<FILTRADO_ARBOL>*/
     .noMatchInTree{margin:35px 0 0 10px; font-style: italic; font-size: 14px;}
     .link{cursor:pointer;}
-    .showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:110px;top:35px;background:transparent url('../img/orgChart/topfilterBackground.png') no-repeat 0 0;}
+    .showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:110px;top:65px;background:transparent url('../img/orgChart/topfilterBackground.png') no-repeat 0 0;}
     .showFilter .filterControls{width:94%; margin-top:10px; float:left;border-left:1px solid #909090; border-right:1px solid #909090; background-color: #ffffff; padding: 0 0 10px 10px;}
     .showFilter .cField{padding-top:12px;}
     .showFilter .cField input{width:177px;font:12px roboto_regular;border:1px solid #abadb3; }
@@ -411,13 +417,13 @@ span.custom1 a
     .showFilter .label{ width: 80%; font:bold 11px roboto_regular; }
     .showFilter .cField .label{ width:80%; font: bold 12px roboto_regular; }
     .closeButton{padding:8px 5px 0 0;cursor:hand;cursor:pointer;}
-    #cleanFilterBlock img{ margin-left: 4px; cursor: pointer; }
-    .configurationTopedge{float:left;width:300px;padding:8px 490px 0 0;font:bold 13px roboto_regular;color:#4e83ae;position:relative;margin-left:0px;}
-    .configurationTopedge .active{color:#222425;height:30px;background: transparent url("../img/orgChart/selectedTree.png") no-repeat 38% 100%; z-index:2000; float:left;}
+    #cleanFilterBlock img{ margin-left: 1px; cursor: pointer; }
+    .configurationTopedge{float:left;width:300px;padding:8px 490px 0 0;font:bold 13px roboto_regular;color:#4e83ae;position:relative;margin:0 0 30px 50px;}	
+    .configurationTopedge .active{color:#222425;height:70px; z-index:2000; float:left;}
+	#organizationMarker{font-size:35px;}	
     .closeLinkFilter{ color: #ff0000}    
     .lastConfigurationBlock{ float: right; }
-    .configurationBlockTopedge{float:left; padding-left: 0.5em;}
-    .configurationFilterTopedge{float:left; padding-left: 0.5em;}
+    .configurationFilterTopedge{float:left; padding: 5px 0 0 5px;}
     /*</FILTRADO_ARBOL>*/
 
     /* <COMUNES> */
