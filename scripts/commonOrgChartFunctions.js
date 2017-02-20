@@ -56,16 +56,18 @@ function transformNodeToHtml(data, isSub, lonelyEmployee) {
 		if (typeof (data[i].children) === 'object') {
 			html += '<br/>';
 			if (isSub && data[i].children.length) {
+				html += '<div class="overlayImg"><img src="img/orgChart/departmentPlus.png"></div>';
 				html += '<span class="companyNode" data-id="' + data[i].Id + '" data-type="' + data[i].NodeType + '">' + data[i].name + '</span>';
 				if (data[i].children.length == 1)
 					lonelyEmployee = true;
 			} else {				
 				if (data[i].NodeType == "Employee") {
+					html += '<div class="overlayImg"><img src="img/orgChart/employeeIcon.png"></div>';
 					html += '<span class="positionType" data-id="' + data[i].Id + '" data-type="' + data[i].NodeType + '">';
 					html += data[i].PositionTypeName + '</span><br>';
 					html += '<span>' + data[i].name + '</span>';
 					
-				} else {
+				} else {					
 					html += '<span class="companyNode" data-id="' + data[i].Id + '"data-type="' + data[i].NodeType + '">' + data[i].name + '</span>';
 					if (data[i].children.length == 1)
 						lonelyEmployee = true;
@@ -113,7 +115,7 @@ function customizeHtml(html) {
 		$(this).parent().find('span:last')[0]
 		var assistantText = assistant.find('span:last').text();
 
-		assistantCompanyNode.html(assistantCompanyNodeText + "<br />" + "<div class='assistant'><span class='assistantLiteral'>Assistant</span><br/><span class='assistantEmployee'>" + assistantText + "</span></div>");
+		assistantCompanyNode.html(assistantCompanyNodeText + "<br />" + "<div class='assistant'><br/><span class='assistantLiteral'>Assistant</span><br/><span class='assistantEmployee'>" + assistantText + "</span></div>");
 		assistant.remove();
 	});
 
@@ -129,11 +131,17 @@ function PaintException(message) {
 }
 
 /*
-* Elimina los asistentes que pudieran mostrarse en segundo nivel del organigrama.
-* Sólo deben aparecer los del primer nivel.
+* Tras pintar el organigrama se requieren acciones sobre sus elementos. Esto es debido a que estilos e imágenes se aplican en un
+* principio a todo el organigrama, pero después en la navegación por los nodos puede ser necesario que no se apliquen.
+* Elimina imágenes que no aplican. 
+* - Elimina los asistentes que pudieran mostrarse en segundo nivel del organigrama. Sólo deben aparecer los del primer nivel.
+* - Elimina los iconos que pudieran mostrarse en el nodo de primer nivel.
+* Eliminamos estilos css que no procedan.
 */
-function hideAssistantSecondLevels() {
+function orgChartPostProcessing() {
 	$('.jOrgChart').find('table tbody tr td.node-container div.assistant').remove();
+	$('.jOrgChart').find('table tr:first td.node-cell .overlayImg').remove();
+	$('span.positionType').parent().css('box-shadow', '0 0 2px 1px #ffae00');
 }
 
 /* 
