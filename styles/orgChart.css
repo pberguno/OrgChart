@@ -1,14 +1,18 @@
 
 /* Ficha personal del empleado. */
-#wrapper{margin:0 auto; width:50%; padding-top:10px;}
-.self {width:500px; border:1px solid;}
-.self ul li.ad {background-image:url(../img/orgChart/icn-home.gif);}
-.self ul li.mail {background-image:url(../img/orgChart/icn-mail.gif);}
-.self ul li.tel {background-image:url(../img/orgChart/icn-tel.gif);}
-.self ul li.web {background-image:url(../img/orgChart/icn-web.gif);}
-.self ul li {background-repeat: no-repeat; padding-left:26px; background-position: 0 .1em; height:25px; display:block; margin-top:-2px;}
-.self h1  {padding-left:26px;	font-size:42px;	color:#1b4491; margin-bottom:3px; clear:both;}
-.self h1 span {font-size:21px; display:block; color:#1b4491; margin-top:-5px;}
+#wrapperEmployee{margin:0 auto; width:810px;}
+.selfEmployee {float:left; width:400px; }
+.selfEmployee ul{padding:0;}
+.selfEmployee ul li.ad {background-image:url(../img/orgChart/icn-home.png);}
+.selfEmployee ul li.mail {background-image:url(../img/orgChart/icn-mail.png);}
+.selfEmployee ul li.tel {background-image:url(../img/orgChart/icn-tel.png);}
+.selfEmployee ul li.web {background-image:url(../img/orgChart/icn-web.png);}
+.selfEmployee ul li {background-repeat: no-repeat; padding-left:26px; background-position: 0 .1em; height:35px; display:block; margin-top:-2px;}
+.selfEmployee span.selfEmployeeName {font-size:40px; color:#272929; clear:both;}
+.selfEmployee span.selfEmployeePositionType {font-size:21px; display:block; color:#ffae00; margin-top:-5px;text-transform: uppercase;}
+.selfEmployeeImage{margin:0 auto; width: 200px; height: 200px; background-image: url('../img/orgChart/employee.jpg'); background-size: cover; display: block; border-radius: 50%;}
+.selfEmployeeSeparator{margin:35px 0 35px 0;}
+.cvextract{font-size:15px;}
 
 /* Alineación horizontal centrada del organigrama. */
 .jOrgChart{margin:auto; text-align: center; padding-top:10px; }

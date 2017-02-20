@@ -20,19 +20,28 @@ function getHierarchicalObjects(obj, key, val, nodeType) {
 * Transforma la información de empleado en código HTML.
 */
 function getEmployeePersonalInformation(employeeNode) {
-	return '<div id="wrapper"> ' +
-		'<div class="self"> ' +
-		'<h1 class="name">' + employeeNode.name + '<br /> ' +
-		'<span>' + employeeNode.PositionTypeName + '</span></h1> ' +
-		'<ul> ' +
-		'<li class="ad">Direcci&oacute;n</li> ' +
-		'<li class="mail">empleado@conti.com</li> ' +
-		'<li class="tel">+11 444 555 22 33</li> ' +
-		'<li class="web">www.blog_o_paginaPersonal.com</li> ' +
-		'</ul> ' +
-		'</div> ' +
-		'<!-- End Personal Information --> ' +
-		'</div> ';
+	return '<div id="wrapperEmployee"> ' +
+				'<div class="selfEmployeeImage"> ' +										
+				'</div> ' +	
+				'<hr class="selfEmployeeSeparator"/>' +
+				'<div class="selfEmployee"> ' +
+					'<span class="selfEmployeeName">' + employeeNode.name + '</span><br /> ' +
+					'<span class="selfEmployeePositionType">' + employeeNode.PositionTypeName + '</span>' +
+					'<ul> ' +
+						'<li class="ad">Direcci&oacute;n</li> ' +
+						'<li class="mail">empleado@conti.com</li> ' +
+						'<li class="tel">+11 444 555 22 33</li> ' +
+						'<li class="web">www.blog_o_paginaPersonal.com</li> ' +
+					'</ul> ' +
+				'</div> ' +
+				'<div class="selfEmployee"> ' +
+					'<span class="cvextract">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' + 
+					'<br/><br/>' +
+					'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate ' + 
+					'velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>' +
+				'</div> ' +				
+				'<!-- End Personal Information --> ' +
+			'</div> ';
 }
 
 /*
@@ -60,14 +69,14 @@ function transformNodeToHtml(data, isSub, lonelyEmployee) {
 				html += '<span class="companyNode" data-id="' + data[i].Id + '" data-type="' + data[i].NodeType + '">' + data[i].name + '</span>';
 				if (data[i].children.length == 1)
 					lonelyEmployee = true;
-			} else {				
+			} else {
 				if (data[i].NodeType == "Employee") {
 					html += '<div class="overlayImg"><img src="img/orgChart/employeeIcon.png"></div>';
 					html += '<span class="positionType" data-id="' + data[i].Id + '" data-type="' + data[i].NodeType + '">';
 					html += data[i].PositionTypeName + '</span><br>';
 					html += '<span class="employee">' + data[i].name + '</span>';
-					
-				} else {					
+
+				} else {
 					html += '<span class="companyNode" data-id="' + data[i].Id + '"data-type="' + data[i].NodeType + '">' + data[i].name + '</span>';
 					if (data[i].children.length == 1)
 						lonelyEmployee = true;
@@ -140,9 +149,9 @@ function PaintException(message) {
 */
 function orgChartPostProcessing() {
 	$('.jOrgChart').find('table tbody tr td.node-container div.assistant').remove();
-	$('.jOrgChart').find('table tr:first td.node-cell .overlayImg').remove();	
+	$('.jOrgChart').find('table tr:first td.node-cell .overlayImg').remove();
 	$('span.positionType').parent().css('box-shadow', '0 0 2px 1px #ffae00');
-//	$('.jOrgChart').find('table tr:first td.node-cell .manager').css('color', 'white !important');
+	//	$('.jOrgChart').find('table tr:first td.node-cell .manager').css('color', 'white !important');
 }
 
 /* 
