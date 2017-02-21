@@ -44,7 +44,7 @@ br {line-height: 2em}
 .jOrgChart .down, .jOrgChart .top, .jOrgChart .left, .jOrgChart .right {border-width: 1px;}
 
 /* Puestos de trabajo */
-.assistant{position: absolute; top:25px; border-radius: 50%; box-shadow: 0 0 2px 1px #999; background-color: #fff; margin-left: 200px; width:130px; height:120px; border-bottom: 1px solid;}
+.assistant{position: absolute; top:25px; border-radius: 50%; box-shadow: 0 0 2px 1px #999; background-color: #fff; margin-left: 200px; width:130px; height:120px;}
 .positionType{color:#ffae00 !important; line-height: 20px !important;}
 .manager span{text-transform:none !important;color:#ffae00 !important;}
 .assistantEmployee{text-transform:none !important;color:#ffae00 !important;}

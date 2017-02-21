@@ -28,23 +28,33 @@ $((function (win) {
             $currentChart.jOrgChart(opts); // creamos el organigrama
             orgChartPostProcessing();
 
-            $("div.container div.node").click(function () {
+            $("div.container div.node:not(:first)").click(function () {
+                var $this = $(this);
+                self.handleClick($this);
+            });
+
+            $(".assistant").click(function () {
                 var $this = $(this);
                 self.handleClick($this);
             });
         }
 
+
         self.handleClick = function (nodeDiv) {
-            $nodeDiv = $(nodeDiv);
-            var id = $nodeDiv.find("span").attr("data-id");
-            var type = $nodeDiv.find("span").attr("data-type");
+            $nodeDiv = $(nodeDiv);            
+            var searchNodeId = $nodeDiv.find("[data-id]");
+            var id = searchNodeId.length > 0 ? searchNodeId.attr("data-id") : null;
+            var searchNodeType = $nodeDiv.find("[data-type]");
+            var type = searchNodeType.length > 0 ? searchNodeType.attr("data-type") : null;
+
             self.tree.seekAndSelectNode(id, type); // marcamos nodo del árbol
+            goToActiveNodeByScroll(); // y nos movemos hasta él con el scroll, si no estuviera visible
 
             if (id) {
                 if (type == "Employee") {
                     $.EventClick_OrganizationTreeNode(null);
                 } else {
-                    var target = $currentChart.find('li span[data-id="' + id + '"][data-type="' + type + '"]');                                 
+                    var target = $currentChart.find('li span[data-id="' + id + '"][data-type="' + type + '"]');
                     if (target) {
                         $currentChart = $("<ul>").append(target.parent("li")).clone();
 
@@ -58,6 +68,11 @@ $((function (win) {
                                 var $this = $(this);
                                 self.handleClick($this);
                             });
+
+                            $(".assistant").click(function () {
+                                var $this = $(this);
+                                self.handleClick($this);
+                            });                            
                         })
                     }
                 }

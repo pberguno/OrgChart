@@ -21,27 +21,27 @@ function getHierarchicalObjects(obj, key, val, nodeType) {
 */
 function getEmployeePersonalInformation(employeeNode) {
 	return '<div id="wrapperEmployee"> ' +
-				'<div class="selfEmployeeImage"> ' +										
-				'</div> ' +	
-				'<hr class="selfEmployeeSeparator"/>' +
-				'<div class="selfEmployee"> ' +
-					'<span class="selfEmployeeName">' + employeeNode.name + '</span><br /> ' +
-					'<span class="selfEmployeePositionType">' + employeeNode.PositionTypeName + '</span>' +
-					'<ul> ' +
-						'<li class="ad">Direcci&oacute;n</li> ' +
-						'<li class="mail">empleado@conti.com</li> ' +
-						'<li class="tel">+11 444 555 22 33</li> ' +
-						'<li class="web">www.blog_o_paginaPersonal.com</li> ' +
-					'</ul> ' +
-				'</div> ' +
-				'<div class="selfEmployee"> ' +
-					'<span class="cvextract">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' + 
-					'<br/><br/>' +
-					'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate ' + 
-					'velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>' +
-				'</div> ' +				
-				'<!-- End Personal Information --> ' +
-			'</div> ';
+		'<div class="selfEmployeeImage"> ' +
+		'</div> ' +
+		'<hr class="selfEmployeeSeparator"/>' +
+		'<div class="selfEmployee"> ' +
+		'<span class="selfEmployeeName">' + employeeNode.name + '</span><br /> ' +
+		'<span class="selfEmployeePositionType">' + employeeNode.PositionTypeName + '</span>' +
+		'<ul> ' +
+		'<li class="ad">Direcci&oacute;n</li> ' +
+		'<li class="mail">empleado@conti.com</li> ' +
+		'<li class="tel">+11 444 555 22 33</li> ' +
+		'<li class="web">www.blog_o_paginaPersonal.com</li> ' +
+		'</ul> ' +
+		'</div> ' +
+		'<div class="selfEmployee"> ' +
+		'<span class="cvextract">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' +
+		'<br/><br/>' +
+		'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate ' +
+		'velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>' +
+		'</div> ' +
+		'<!-- End Personal Information --> ' +
+		'</div> ';
 }
 
 /*
@@ -120,11 +120,16 @@ function customizeHtml(html) {
 		var assistantCompanyNode = $(this).parent().parent().prev('.companyNode');
 		var assistantCompanyNodeText = assistantCompanyNode.html();
 
-		var assistant = $(this).parent();
-		$(this).parent().find('span:last')[0]
+		var assistant = $(this).parent();		
+		var assistantId = assistant.find('span:first').attr('data-id');
 		var assistantText = assistant.find('span:last').text();
 
-		assistantCompanyNode.html(assistantCompanyNodeText + "<br />" + "<div class='assistant'><br/><span class='assistantLiteral'>Assistant</span><br/><span class='assistantEmployee'>" + assistantText + "</span></div>");
+		assistantCompanyNode.html(
+			assistantCompanyNodeText + "<br />" +
+			"<div class='assistant'><br/>" + 
+			"<span class='assistantLiteral'>Assistant</span><br/>" +
+			"<span data-type='Employee' data-id='" + assistantId + "'class='assistantEmployee'>" + assistantText + "</span>" +
+			"</div>");
 		assistant.remove();
 	});
 
@@ -152,6 +157,15 @@ function orgChartPostProcessing() {
 	$('.jOrgChart').find('table tr:first td.node-cell .overlayImg').remove();
 	$('span.positionType').parent().css('box-shadow', '0 0 2px 1px #ffae00');
 	//	$('.jOrgChart').find('table tr:first td.node-cell .manager').css('color', 'white !important');
+}
+
+/*
+* Permite moverse hasta el nodo activo en el árbol de la organización.
+*/
+function goToActiveNodeByScroll(){
+    $('ul.dynatree-container').animate({
+        scrollTop: $(".dynatree-active").offset().top},
+        'slow');
 }
 
 /* 
