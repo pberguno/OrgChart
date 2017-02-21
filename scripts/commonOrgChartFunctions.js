@@ -107,10 +107,14 @@ function customizeHtml(html) {
 		var managerCompanyNodeText = managerCompanyNode.html();
 
 		var manager = $(this).parent();
-		$(this).parent().find('span:last')[0]
+		var managerId = manager.find('span:first').attr('data-id');
 		var managerText = manager.find('span:last').text();
 
-		managerCompanyNode.html(managerCompanyNodeText + "<br />" + "<div class='manager'><span>" + managerText + "</span></div>");
+		managerCompanyNode.html(
+			managerCompanyNodeText + "<br />" + 
+			"<div class='manager'>" + 
+			"<span data-type='Employee' data-id='" + managerId + "'>" + managerText + "</span>" + 
+			"</div>");
 		manager.remove();
 	});
 
