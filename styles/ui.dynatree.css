@@ -408,7 +408,7 @@ span.custom1 a
     /*<FILTRADO_ARBOL>*/
     .noMatchInTree{margin:35px 0 0 10px; font-style: italic; font-size: 14px;}
     .link{cursor:pointer;}
-    .showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:160px;top:65px;background:transparent url('../img/orgChart/topfilterBackground.png') no-repeat 0 0;}
+    .showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:143px;top:65px;background:transparent url('../img/orgChart/topfilterBackground.png') no-repeat 0 0;}
     .showFilter .filterControls{width:94%; margin-top:10px; float:left;border-left:1px solid #909090; border-right:1px solid #909090; background-color: #ffffff; padding: 0 0 10px 10px;}
     .showFilter .cField{padding-top:12px;}
     .showFilter .cField input{width:177px;font:12px roboto_regular;border:1px solid #abadb3; }
@@ -424,6 +424,7 @@ span.custom1 a
     .closeLinkFilter{ color: #ff0000}    
     .lastConfigurationBlock{ float: right; }
     .configurationFilterTopedge{float:left; padding: 5px 0 0 5px;}
+	#linkFilter img{padding-right:15px;}
     /*</FILTRADO_ARBOL>*/
 
     /* <COMUNES> */

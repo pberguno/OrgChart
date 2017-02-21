@@ -120,13 +120,13 @@ function customizeHtml(html) {
 		var assistantCompanyNode = $(this).parent().parent().prev('.companyNode');
 		var assistantCompanyNodeText = assistantCompanyNode.html();
 
-		var assistant = $(this).parent();		
+		var assistant = $(this).parent();
 		var assistantId = assistant.find('span:first').attr('data-id');
 		var assistantText = assistant.find('span:last').text();
 
 		assistantCompanyNode.html(
 			assistantCompanyNodeText + "<br />" +
-			"<div class='assistant'><br/>" + 
+			"<div class='assistant'><br/>" +
 			"<span class='assistantLiteral'>Assistant</span><br/>" +
 			"<span data-type='Employee' data-id='" + assistantId + "'class='assistantEmployee'>" + assistantText + "</span>" +
 			"</div>");
@@ -146,26 +146,37 @@ function PaintException(message) {
 
 /*
 * Tras pintar el organigrama se requieren acciones sobre sus elementos. Esto es debido a que estilos e imágenes se aplican en un
-* principio a todo el organigrama, pero después en la navegación por los nodos puede ser necesario que no se apliquen.
-* Elimina imágenes que no aplican. 
+* principio a todo el organigrama, pero después en la navegación por los nodos puede ser necesario descartarlos.
+* Imágenes que no aplican. 
 * - Elimina los asistentes que pudieran mostrarse en segundo nivel del organigrama. Sólo deben aparecer los del primer nivel.
 * - Elimina los iconos que pudieran mostrarse en el nodo de primer nivel.
 * Eliminamos estilos css que no procedan.
 */
 function orgChartPostProcessing() {
 	$('.jOrgChart').find('table tbody tr td.node-container div.assistant').remove();
-	$('.jOrgChart').find('table tr:first td.node-cell .overlayImg').remove();
+	$('.jOrgChart').find('table tr:first td.node-cell .overlayImg').remove(); // fuera iconos de + o ficha de empleado, en primer nivel
+
+	// sobreescribimos el borde del círculo de los puestos de trabajo.
 	$('span.positionType').parent().css('box-shadow', '0 0 2px 1px #ffae00');
-	//	$('.jOrgChart').find('table tr:first td.node-cell .manager').css('color', 'white !important');
+
+	var lonelyEmployee = $('.jOrgChart').find('table tr').length == 1;
+	if (lonelyEmployee) {
+		var lonelyManager = $('.jOrgChart').find('table tr:first td.node-cell .manager');
+		if (lonelyManager) {
+			lonelyManager.removeClass('manager');
+			lonelyManager.addClass('lonelyManager');
+		}
+	}
 }
 
 /*
 * Permite moverse hasta el nodo activo en el árbol de la organización.
 */
-function goToActiveNodeByScroll(){
-    $('ul.dynatree-container').animate({
-        scrollTop: $(".dynatree-active").offset().top},
-        'slow');
+function goToActiveNodeByScroll() {
+	var relativeDiff = $(".dynatree-active").offset().top - $('ul.dynatree-container li:first').offset().top;	
+	$('ul.dynatree-container').animate({
+		scrollTop: relativeDiff
+	}, 'slow');
 }
 
 /* 
