@@ -46,6 +46,14 @@ $(document).ready(function () {
     if (dataLoaded) {
         $(document).data("treeViewModel", viewModelOrganizationTree);
         viewModelOrganizationTree.run();
+        // Comprobamos si se han establecido parámetros de búsqueda en la URL.
+        var companyNodeId = $.getUrlVar('CompanyNodeId');
+        var companyNodeType = $.getUrlVar('CompanyNodeType');
+        if (companyNodeId && companyNodeType) {
+            viewModelOrganizationTree.seekAndSelectNode(companyNodeId, companyNodeType);
+            goToActiveNodeByScroll();
+            $.EventClick_OrganizationTreeNode(null);
+        }
     } else {
         PaintException('Se ha producido un error: No hay datos en los catalogos de la organizacion.');
     }
@@ -183,10 +191,10 @@ $((function (win) {
         self.collapseAll = function () {
             $("#organizationTreeDynatree span").removeClass("dynatree-active");
             $(self.organizationTreeDynatreeId()).dynatree("getRoot").visit(function (node) {
-                if (node.data.nodeType == "RootNode"){
+                if (node.data.nodeType == "RootNode") {
                     node.span.className = node.span.className + " dynatree-active";
                     node.select(true);
-                }                    
+                }
                 node.expand(false);
             });
         }
