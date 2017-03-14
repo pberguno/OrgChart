@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'roboto_regular';
-    src: url('fonts/Roboto-Regular.eot');
-    src: url('fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
-         url('fonts/Roboto-Regular.woff') format('woff'),
-         url('fonts/Roboto-Regular.ttf') format('truetype'),
-         url('fonts/Roboto-Regular.svg#roboto_regular') format('svg');
+    src: url('../fonts/Roboto-Regular.eot');
+    src: url('../fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Roboto-Regular.woff') format('woff'),
+         url('../fonts/Roboto-Regular.ttf') format('truetype'),
+         url('../fonts/Roboto-Regular.svg#roboto_regular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -84,7 +84,7 @@ span.dynatree-drag-helper-img,
 	vertical-align: top;
 	background-repeat: no-repeat;
 	background-position: left;
-	background-image: url("../img/orgChart/icons.gif");
+	background-image: url("../../img/orgChart/icons.gif");
 	background-position: 0 0;
 }
 
@@ -408,12 +408,12 @@ span.custom1 a
     /*<FILTRADO_ARBOL>*/
     .noMatchInTree{margin:35px 0 0 10px; font-style: italic; font-size: 14px;}
     .link{cursor:pointer;}
-    .showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:143px;top:65px;background:transparent url('../img/orgChart/topfilterBackground.png') no-repeat 0 0;}
+    .showFilter{width:200px;height:306px;padding:20px 0 0 0px; position:absolute;left:143px;top:65px;background:transparent url('../../img/orgChart/topfilterBackground.png') no-repeat 0 0;}
     .showFilter .filterControls{width:94%; margin-top:10px; float:left;border-left:1px solid #909090; border-right:1px solid #909090; background-color: #ffffff; padding: 0 0 10px 10px;}
     .showFilter .cField{padding-top:12px;}
     .showFilter .cField input{width:177px;font:12px roboto_regular;border:1px solid #abadb3; }
-    .showFilter .cBoton{width: 100%; height: 44px; padding-top:12px;text-align:center; float:left;background:transparent url('../img/orgChart/bottomfilterBackground.png') no-repeat 0 0;}
-    .showFilter .button{float:right;padding:5px 0px 5px 0;width:74px;margin:4px 0px;font:11px roboto_regular;color:#fff;text-align:center;margin-right:8px;background: transparent url("../img/orgChart/button.gif") no-repeat;cursor:hand;cursor:pointer;}
+    .showFilter .cBoton{width: 100%; height: 44px; padding-top:12px;text-align:center; float:left;background:transparent url('../../img/orgChart/bottomfilterBackground.png') no-repeat 0 0;}
+    .showFilter .button{float:right;padding:5px 0px 5px 0;width:74px;margin:4px 0px;font:11px roboto_regular;color:#fff;text-align:center;margin-right:8px;background: transparent url("../../img/orgChart/button.gif") no-repeat;cursor:hand;cursor:pointer;}
     .showFilter .label{ width: 80%; font:bold 11px roboto_regular; }
     .showFilter .cField .label{ width:80%; font: bold 12px roboto_regular; }
     .closeButton{padding:8px 5px 0 0;cursor:hand;cursor:pointer;}
