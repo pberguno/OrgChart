@@ -57,8 +57,25 @@ $(document).ready(function () {
     } else {
         PaintException('Se ha producido un error: No hay datos en los catalogos de la organizacion.');
     }
-    //}
+    //}else if (pathname.toLowerCase().indexOf("/lists/employees/") >= 0){
+	//	ExecuteLogicInEmployeesList();
+	//}
 });
+
+/**
+ * Filtra el desplegable de puestos de trabajo en función al departamento seleccionado.
+ */
+function ExecuteLogicInEmployeesList(){	
+	$().SPServices.SPCascadeDropdowns({
+		relationshipList: "PositionTypes",
+		relationshipListParentColumn: "Departamento asociado",
+		relationshipListChildColumn: "Title",
+		//CAMLQuery: "<Eq><FieldRef Name='Status'/><Value Type='Text'>Active</Value></Eq>",   
+		parentColumn: "Departamento asociado",
+		childColumn: "Puesto de trabajo",
+		debug: true
+	});	
+}
 
 $((function (win) {
     // ###### Espacio de nombres ######
