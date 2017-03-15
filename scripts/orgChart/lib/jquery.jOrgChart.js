@@ -72,7 +72,7 @@
                 $nodeDiv.click(function () {
                     var $this = $(this);
                     var $tr = $this.closest("tr");
-                    $this.css('cursor', 'hand');
+                    $this.css('cursor', 'pointer');
 
                     if ($tr.hasClass('contracted')) {                        
                         $this.addClass('companyNodeWithChildren');
@@ -96,7 +96,7 @@
         $nodeCell.append($nodeDiv);
         $nodeRow.append($nodeCell);
         $tbody.append($nodeRow);
-        $nodeDiv.css('cursor', 'hand');
+        $nodeDiv.css('cursor', 'pointer');
         
         if ($childNodes.length > 0) {
             // if it can be expanded then change the cursor            
@@ -153,7 +153,7 @@
                         $nodeRow.nextAll('tr').css('visibility', 'hidden');
                         $nodeRow.removeClass('expanded');
                         $nodeRow.addClass('contracted');
-                        $nodeDiv.css('cursor', 'hand');
+                        $nodeDiv.css('cursor', 'pointer');
                         $nodeDiv.addClass('companyNodeWithChildren');
                     } else {
                         $nodeDiv.addClass(item);
