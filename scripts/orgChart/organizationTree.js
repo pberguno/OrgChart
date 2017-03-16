@@ -66,15 +66,14 @@ $(document).ready(function () {
  * Filtra el desplegable de puestos de trabajo en función al departamento seleccionado.
  */
 function ExecuteLogicInEmployeesList(){	
-	$().SPServices.SPCascadeDropdowns({
-		relationshipList: "PositionTypes",
-		relationshipListParentColumn: "Departamento asociado",
-		relationshipListChildColumn: "Title",
-		//CAMLQuery: "<Eq><FieldRef Name='Status'/><Value Type='Text'>Active</Value></Eq>",   
-		parentColumn: "Departamento asociado",
-		childColumn: "Puesto de trabajo",
-		debug: true
-	});	
+    $().SPServices.SPCascadeDropdowns({
+        relationshipList: "PositionTypes",
+        relationshipListParentColumn: "Departamento",
+        relationshipListChildColumn: "Title",
+        parentColumn: "Departamento",
+        childColumn: "Puesto",
+        debug: true
+    });
 }
 
 $((function (win) {
