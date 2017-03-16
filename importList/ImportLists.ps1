@@ -1,8 +1,8 @@
-Add-PsSnapin Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Out-Null 
+$url = "http://contitest:19531/"
 
-$url = "http://intranet.continental.com"
+Import-SPweb -identity $url -path C:\temp\import\Departments.cmp
+import-spweb -identity $url -path C:\temp\import\PositionTypes.cmp
+import-spweb -identity $url -path C:\temp\import\Employees.cmp
+import-spweb -identity $url -path C:\temp\import\EmployeePhotos.cmp
 
-Import-SPWeb $url -Path c:\backup\departamentos.cmp -UpdateVersions OverWrite
-Import-SPWeb $url -Path c:\backup\puestos.cmp -UpdateVersions OverWrite
-Import-SPWeb $url -Path c:\backup\empleados.cmp -UpdateVersions OverWrite
-Write-Output "Importacion correcta."
+Write-Output "Importacion finalizada."
