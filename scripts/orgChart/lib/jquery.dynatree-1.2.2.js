@@ -121,15 +121,15 @@ DynaTreeNode.prototype = {
 		if(pattern.length < 1 && !clear){
 			clear = true;
 			this.visit(function(node){
-				node.expand(true);
-				node.li.hidden = false;
+				node.expand(true);				
+				node.li.style.display="";
 				node.expand(false);
 			});
 		} else if (pattern.length >= 1) {
 			clear = false;
 			this.visit(function(node){
-				node.expand(true);
-				node.li.hidden = false;
+				node.expand(true);				
+				node.li.style.display="";
 			});
 
 			for (var i = 0; i < this.childList.length; i++){
@@ -142,7 +142,6 @@ DynaTreeNode.prototype = {
 
 		if (this.childList){
 			// parent node
-
 			var hideNode = true;
 			for(var i = 0; i < this.childList.length; i++){
 				var hideChild = {hide: false};
@@ -177,8 +176,8 @@ DynaTreeNode.prototype = {
 		return false;
 	},
 	_hideNode: function(){
-		if(this.li) {
-			this.li.hidden = true;
+		if(this.li) {			
+			this.li.style.display="none";
     	}
 	},	
 
