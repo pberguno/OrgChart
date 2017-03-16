@@ -395,7 +395,7 @@ span.custom1 a
     span.dynatree-icon { display: none; }
     .organizationTree ul.dynatree-container a { background-color: white; width: 75%;cursor:default; }    
 	.organizationTree ul.dynatree-container a:hover{ color:#ffae00;cursor:hand; }    
-    .organizationChartContent{float:left; min-width:75%;margin:-70px -400px 0px 10px; min-height: 500px;max-width:500px;overflow-x:auto;}
+    .organizationChartContent{float:left; min-width:75%;margin:-70px -400px 0px 10px; min-height: 600px;max-width:500px;overflow-x:auto;}
 	.level1Node a{font-size:15px;color:#333131; font-weight: bold; }
 	.level2Node a{font-size:14px;color:#333131; font-weight: bold; }
 	.level3Node a{font-size:13px;color:#333131;}

@@ -10,7 +10,7 @@
 .selfEmployee ul li {background-repeat: no-repeat; padding-left:26px; margin-top:20px; display:block;}
 .selfEmployee span.selfEmployeeName {font-size:35px; color:#272929; clear:both;}
 .selfEmployee span.selfEmployeePositionType {font-size:20px; display:block; color:#ffae00; text-transform: uppercase;}
-.selfEmployeeImage{margin:0 auto; width: 200px; height: 200px; background-image: url('../../img/orgChart/employee.jpg'); background-size: cover; display: block; border-radius: 50%;}
+.selfEmployeeImage{margin:0 auto; width: 200px; height: 200px; background-size: cover; display: block; border-radius: 50%;}
 .selfEmployeeSeparator{margin:35px 0 35px 0;}
 .cvextract{font-size:15px;}
 

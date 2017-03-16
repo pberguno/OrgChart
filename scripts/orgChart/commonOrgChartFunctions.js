@@ -20,8 +20,8 @@ function getHierarchicalObjects(obj, key, val, nodeType) {
 * Transforma la información de empleado en código HTML.
 */
 function getEmployeePersonalInformation(employeeNode) {
-	return '<div id="wrapperEmployee"> ' +
-		'<div class="selfEmployeeImage"> ' +
+	return '<div id="wrapperEmployee"> ' +				
+		'<div class="selfEmployeeImage" style="background-image: url( ' + employeeNode.Photo + ')">' +		 		
 		'</div> ' +
 		'<hr class="selfEmployeeSeparator"/>' +
 		'<div class="selfEmployee"> ' +
