@@ -3414,8 +3414,8 @@ var _registerDnd = function() {
 * http://www.etnassoft.com/2011/03/03/eliminar-tildes-con-javascript/
 */
 var normalize = (function() {
-  var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç", 
-      to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+  var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÛãàáäâèéëêìíïîòóöôùúûÇç", 
+      to   = "AAAAAEEEEIIIIOOOOUUUaaaaaeeeeiiiioooouuucc",
       mapping = {};
  
   for(var i = 0, j = from.length; i < j; i++ )
@@ -3429,7 +3429,7 @@ var normalize = (function() {
               ret.push( mapping[ c ] );
           else
               ret.push( c );
-      }      
+      }
       return ret.join( '' );
   }
  
