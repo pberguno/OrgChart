@@ -20,8 +20,8 @@ function getHierarchicalObjects(obj, key, val, nodeType) {
 * Transforma la información de empleado en código HTML.
 */
 function getEmployeePersonalInformation(employeeNode) {
-	return '<div id="wrapperEmployee"> ' +				
-		'<div class="selfEmployeeImage" style="background-image: url( ' + employeeNode.Photo + ')">' +		 		
+	return '<div id="wrapperEmployee"> ' +
+		'<div class="selfEmployeeImage" style="background-image: url( ' + employeeNode.Photo + ')">' +
 		'</div> ' +
 		'<hr class="selfEmployeeSeparator"/>' +
 		'<div class="selfEmployee"> ' +
@@ -111,9 +111,9 @@ function customizeHtml(html) {
 		var managerText = manager.find('span:last').text();
 
 		managerCompanyNode.html(
-			managerCompanyNodeText + "<br />" + 
-			"<div class='manager'>" + 
-			"<span data-type='Employee' data-id='" + managerId + "'>" + managerText + "</span>" + 
+			managerCompanyNodeText + "<br />" +
+			"<div class='manager'>" +
+			"<span data-type='Employee' data-id='" + managerId + "'>" + managerText + "</span>" +
 			"</div>");
 		manager.remove();
 	});
@@ -177,7 +177,7 @@ function orgChartPostProcessing() {
 * Permite moverse hasta el nodo activo en el árbol de la organización.
 */
 function goToActiveNodeByScroll() {
-	var relativeDiff = $(".dynatree-active").offset().top - $('ul.dynatree-container li:first').offset().top;	
+	var relativeDiff = $(".dynatree-active").offset().top - $('ul.dynatree-container li:first').offset().top;
 	$('ul.dynatree-container').animate({
 		scrollTop: relativeDiff
 	}, 'slow');
@@ -201,18 +201,18 @@ ko.bindingHandlers.executeOnEnter = {
 };
 
 $.extend({
-	getUrlVars: function(){
-	var vars = [], hash;
-	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-	for(var i = 0; i < hashes.length; i++)
-	{
-		hash = hashes[i].split('=');
-		vars.push(hash[0]);
-		vars[hash[0]] = hash[1];
-	}
-	return vars;
+	// Permite obtener el valor de los parámetros de URL.
+	getUrlVars: function () {
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for (var i = 0; i < hashes.length; i++) {
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
 	},
-	getUrlVar: function(name){
-	return $.getUrlVars()[name];
+	getUrlVar: function (name) {
+		return $.getUrlVars()[name];
 	}
 });
