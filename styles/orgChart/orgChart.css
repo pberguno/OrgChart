@@ -1,0 +1,61 @@
+
+/* Ficha personal del empleado. */
+#wrapperEmployee{margin:0 auto; width:850px;}
+.selfEmployee {float:left; width:410px; padding-left:10px;}
+.selfEmployee ul{padding:0;}
+.selfEmployee ul li.ad {background-image:url(../../img/orgChart/icn-home.png);}
+.selfEmployee ul li.mail {background-image:url(../../img/orgChart/icn-mail.png);}
+.selfEmployee ul li.tel {background-image:url(../../img/orgChart/icn-tel.png);}
+.selfEmployee ul li.web {background-image:url(../../img/orgChart/icn-web.png);}
+.selfEmployee ul li {background-repeat: no-repeat; padding-left:26px; margin-top:20px; display:block;}
+.selfEmployee span.selfEmployeeName {font-size:35px; color:#272929; clear:both;line-height:35px;}
+.selfEmployee span.selfEmployeePositionType {font-size:20px; display:block; color:#ffae00; text-transform: uppercase;}
+.selfEmployeeImage{margin:0 auto; width: 200px; height: 200px; background-size: cover; display: block; border-radius: 50%;}
+.selfEmployeeSeparator{margin:35px 0 35px 0;}
+.cvextract{font-size:15px;}
+
+/* Alineación horizontal centrada del organigrama. */
+.jOrgChart{margin:auto; text-align: center; padding-top:10px; }
+.jOrgChart table {margin: auto;}
+
+/* Líneas del organigrama */
+.jOrgChart .chartline {height : 40px;}
+.jOrgChart .down {background-color : #999;margin : 0px auto;}
+.jOrgChart .top {border-top : 1px solid black;}
+.jOrgChart .left {border-right : 1px solid black;}
+.jOrgChart .right {border-left : 1px solid black;}
+
+/* Nivel nodo */
+.jOrgChart td {text-align:center; vertical-align:middle; padding:0;}
+
+/* Nodo */
+.jOrgChart .node {background-color : #35363B; display : inline-block; width : 96px; height : 60px; z-index : 10; margin : 0 15px;}
+.jOrgChart .node {margin-left: 20px; background-color: white; height: 140px; width: 170px; border-radius: 50%; box-shadow: 0 0 2px 1px #999; padding-top:20px;position:relative;}
+.jOrgChart .node span {line-height: 25px; text-align: center; font-size:14px;text-transform: uppercase; color:#333131;}
+.jOrgChart .node span[data-type=RootNode] .manager span {color: white !important;} /* Manager de rootnode */
+
+br {line-height: 2em}
+.overlayImg{float:right; bottom:1px; right:20px; position:absolute; border-radius: 50%; background-color:white; opacity:0.95; width:30px; height:30px;}
+.overlayImg img{width:20px; padding-top:4px;}
+
+
+.jOrgChart .chartline {width: 3px;}
+.jOrgChart .down, .jOrgChart .top, .jOrgChart .left, .jOrgChart .right {border-width: 2px;border-color:#999;}
+
+/* Puestos de trabajo */
+.assistant{position: absolute; top:25px; border-radius: 50%; box-shadow: 0 0 2px 1px #999; background-color: #fff; margin-left: 200px; width:130px; height:120px;}
+.positionType{color:#ffae00 !important; line-height: 20px !important;}
+.manager span{text-transform:none !important;color:#ffae00 !important;}
+.lonelyManager span {text-transform:none !important;color:#ffae00 !important;}
+.assistantEmployee{text-transform:none !important;color:#ffae00 !important;}
+.employee{text-transform:none !important;}
+.assistantLiteral{color:#333131;}
+
+/* Nodos de compañía con hijos. */
+.companyNodeWithChildren{background-color: #ffa500 !important; }
+div.jOrgChart>table>tbody>tr:last-child .companyNodeWithChildren { background-color:#f1f1f0 !important; } /* sobreescribimos color para elementos 2º nivel */
+div.jOrgChart>table>tbody>tr:first-child .manager span { color:#f1f1f0 !important; } /* managers de primer nivel en el organigrama */
+
+/* Captura de posibles errores */
+.errorSectionTitle{width:95%;float:left;padding:12px 0 0 5px;margin-left:12px;border-bottom:3px solid #f0f0f0;}
+.errorTitle{width:80%;float:left;font:bold 12px roboto_regular;color:red; padding-top:10px;}

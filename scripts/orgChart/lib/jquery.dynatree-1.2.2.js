@@ -103,8 +103,84 @@ function noop() {
  *	Class DynaTreeNode
  */
 var DynaTreeNode = Class.create();
+var clear = true;
+
+
+
+
+
+
+
 
 DynaTreeNode.prototype = {
+	/* Búsqueda pesonalizada.
+	 * No implementada en la librería original.
+	 * http://stackoverflow.com/questions/12277797/jquery-dynatree-search-node-by-name
+	 */
+	search: function(pattern){
+		if(pattern.length < 1 && !clear){
+			clear = true;
+			this.visit(function(node){
+				node.expand(true);				
+				node.li.style.display="";
+				node.expand(false);
+			});
+		} else if (pattern.length >= 1) {
+			clear = false;
+			this.visit(function(node){
+				node.expand(true);				
+				node.li.style.display="";
+			});
+
+			for (var i = 0; i < this.childList.length; i++){
+				var hide = {hide: false};
+				this.childList[i]._searchNode(pattern, hide);
+			}
+		} 
+	},	
+	_searchNode: function(pattern, hide){
+
+		if (this.childList){
+			// parent node
+			var hideNode = true;
+			for(var i = 0; i < this.childList.length; i++){
+				var hideChild = {hide: false};
+				this.childList[i]._searchNode(pattern, hideChild);
+				hideNode = hideNode && hideChild.hide;
+			}
+			if(hideNode && !this._isRightWithPattern(pattern)){
+				this._hideNode();
+				hide.hide = true;
+			} else {
+				hide.hide = false;
+			}
+
+		} else {
+			// leaf
+			if (!this._isRightWithPattern(pattern)){
+				this._hideNode();
+				hide.hide = true;
+			} else {
+				hide.hide = false;
+			}
+		}
+	},
+	_isRightWithPattern: function(pattern){		
+		
+		var compare1 = normalize(this.data.title.toLowerCase());
+		var compare2 = normalize(pattern.toLowerCase());
+
+		if(compare1.indexOf(compare2) >= 0){
+			return true;
+		}
+		return false;
+	},
+	_hideNode: function(){
+		if(this.li) {			
+			this.li.style.display="none";
+    	}
+	},	
+
 	initialize: function(parent, tree, data) {
 		/**
 		 * @constructor
@@ -126,7 +202,6 @@ DynaTreeNode.prototype = {
 		this.hasSubSel = false;
 		this.bExpanded = false;
 		this.bSelected = false;
-
 	},
 
 	toString: function() {
@@ -1153,7 +1228,7 @@ DynaTreeNode.prototype = {
 			var aTag = this.span.getElementsByTagName("a");
 			if(aTag[0]){
 				// issue 154, 313
-				// PBD - Comentado, ya que el m�todo $.browser se elimina de la versi�n jQuery 1.9
+				// PBD - Comentado, ya que el m�todo $.browser se elimina de la versi�n jQuery 1.9
 				// http://stackoverflow.com/questions/14923301/uncaught-typeerror-cannot-read-property-msie-of-undefined-jquery-tools				
 				// if(!($.browser.msie && parseInt($.browser.version, 10) < 9)){
 					// aTag[0].focus();
@@ -3333,6 +3408,32 @@ var _registerDnd = function() {
 	});
 	didRegisterDnd = true;
 };
+
+/*
+* Eliminamos tildes para poder hacer búsquedas independientemente de los acentos u otros caracteres.
+* http://www.etnassoft.com/2011/03/03/eliminar-tildes-con-javascript/
+*/
+var normalize = (function() {
+  var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÛãàáäâèéëêìíïîòóöôùúûÇç", 
+      to   = "AAAAAEEEEIIIIOOOOUUUaaaaaeeeeiiiioooouuucc",
+      mapping = {};
+ 
+  for(var i = 0, j = from.length; i < j; i++ )
+      mapping[ from.charAt( i ) ] = to.charAt( i );
+ 
+  return function( str ) {
+      var ret = [];
+      for( var i = 0, j = str.length; i < j; i++ ) {
+          var c = str.charAt( i );
+          if( mapping.hasOwnProperty( str.charAt( i ) ) )
+              ret.push( mapping[ c ] );
+          else
+              ret.push( c );
+      }
+      return ret.join( '' );
+  }
+ 
+})();
 
 // ---------------------------------------------------------------------------
 }(jQuery));

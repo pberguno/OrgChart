@@ -1,68 +1,16 @@
-$originalChart = null;
-$currentChart = null;
-var opts = {	// opciones del organigrama
-			chartElement : '#chartContainer', //your tree container
-			handleClick: false,
-			depth: 2,
-			interactive: false,
-			};
-
-$((function (win) {
-    // ###### Espacio de nombres ######
-    var app = null;
-    if (!win.organizationChart)
-        app = win.organizationChart = {};
-    else
-        app = win.organizationChart;
-		
-	app.OrganizationChartManagement = function (tree) {
-		var self = this;
-		self.tree = tree;
-		
-		self.init_chart = function (orgList){			
-			$("#chartContainer").html(""); //clean your container			
-			$("#chartContainer").html(orgList);
-			
-			$originalChart = $("div#chartContainer ul#org").clone();
-			$currentChart = $originalChart.clone();
-			$currentChart.jOrgChart(opts); //creates the jOrgChart
-
-			$("div.container div.node").click(function () {
-				var $this = $(this);
-				self.handleClick($this);
-			});
-		}
-		
-		self.handleClick = function (nodeDiv){
-			$nodeDiv = $(nodeDiv);
-			var id = $nodeDiv.find("span").attr("data-id");
-			var type = $nodeDiv.find("span").attr("data-type");
-			self.tree.seekAndSelectNode(id, type);
-			
-			if (id) {
-				var target = $currentChart.find('li span[data-id="' + id + '"]');
-
-				if (target) {
-					$currentChart = $("<ul>").append(target.parent("li")).clone();
-
-					$("div.container").fadeOut(200, function () {
-						$("div.container").html("");
-						$currentChart.jOrgChart(opts);
-						
-						$("div.container").fadeIn(200);
-						$("div.container div.node:not(:first)").click(function () {
-							var $this = $(this);
-							self.handleClick($this);
-						});
-					})
-				}
-			}
-		}
-	}
-})(window));
-
-
-
+/**
+ * jQuery org-chart/tree plugin.
+ *
+ * Author: Wes Nolte
+ * http://twitter.com/wesnolte
+ *
+ * Based on the work of Mark Lee
+ * http://www.capricasoftware.co.uk 
+ *
+ * Copyright (c) 2011 Wesley Nolte
+ * Dual licensed under the MIT and GPL licenses.
+ *
+ */
 (function ($) {
     $.fn.jOrgChart = function (options) {
         var opts = $.extend({}, $.fn.jOrgChart.defaults, options);
@@ -124,17 +72,18 @@ $((function (win) {
                 $nodeDiv.click(function () {
                     var $this = $(this);
                     var $tr = $this.closest("tr");
+                    $this.css('cursor', 'pointer');
 
-                    if ($tr.hasClass('contracted')) {
-                        $this.css('cursor', 'hand');
+                    if ($tr.hasClass('contracted')) {                        
+                        $this.addClass('companyNodeWithChildren');
                         $tr.removeClass('contracted').addClass('expanded');
                         $tr.nextAll("tr").css('visibility', '');
 
                         // Update the <li> appropriately so that if the tree redraws collapsed/non-collapsed nodes
                         // maintain their appearance
                         $node.removeClass('collapsed');
-                    } else {
-                        $this.css('cursor', 'hand');
+                    } else {                    
+                        $this.addClass('companyNodeWithChildren');
                         $tr.removeClass('expanded').addClass('contracted');
                         $tr.nextAll("tr").css('visibility', 'hidden');
 
@@ -147,10 +96,11 @@ $((function (win) {
         $nodeCell.append($nodeDiv);
         $nodeRow.append($nodeCell);
         $tbody.append($nodeRow);
-
+        $nodeDiv.css('cursor', 'pointer');
+        
         if ($childNodes.length > 0) {
-            // if it can be expanded then change the cursor
-            $nodeDiv.css('cursor', 'hand');
+            // if it can be expanded then change the cursor            
+            $nodeDiv.addClass('companyNodeWithChildren');
 
             // recurse until leaves found (-1) or to the level specified
             if (opts.depth == -1 || (level + 1 < opts.depth)) {
@@ -190,7 +140,7 @@ $((function (win) {
 
             }
             $tbody.append($childNodesRow);
-        }
+        }         
 
         // any classes on the LI element get copied to the relevant node in the tree
         // apart from the special 'collapsed' class, which collapses the sub-tree at this point
@@ -203,7 +153,8 @@ $((function (win) {
                         $nodeRow.nextAll('tr').css('visibility', 'hidden');
                         $nodeRow.removeClass('expanded');
                         $nodeRow.addClass('contracted');
-                        $nodeDiv.css('cursor', 'hand');
+                        $nodeDiv.css('cursor', 'pointer');
+                        $nodeDiv.addClass('companyNodeWithChildren');
                     } else {
                         $nodeDiv.addClass(item);
                     }
