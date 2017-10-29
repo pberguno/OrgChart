@@ -27,10 +27,10 @@ function getEmployeePersonalInformation(employeeNode) {
 		'<div class="selfEmployee"> ' +
 		'<span class="selfEmployeeName">' + employeeNode.name + '</span><br /> ' +
 		'<span class="selfEmployeePositionType">' + employeeNode.PositionTypeName + '</span>' +
-		'<ul> ' +
-		'<li class="tel">+11 444 555 22 33</li> ' +
-		'<li class="mail">empleado@conti.com</li> ' +
-		'</ul> ' +
+		'<br/> ' +
+		'<span class="tel">+11 444 555 22 33</span> ' +
+		'<br/> ' +
+		'<span class="mail">empleado@conti.com</span> ' +
 		'</div> ' +
 		'<!-- End Personal Information --> ' +
 		'</div> ';
