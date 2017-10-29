@@ -1,7 +1,7 @@
 
 /* Ficha personal del empleado. */
 #wrapperEmployee{margin:0 auto; width:850px;}
-.selfEmployee {float:left; width:410px; padding-left:10px;}
+.selfEmployee {margin:0 auto; width:410px; padding-left:10px;}
 .selfEmployee ul{padding:0;}
 .selfEmployee ul li.ad {background-image:url(../../img/orgChart/icn-home.png);}
 .selfEmployee ul li.mail {background-image:url(../../img/orgChart/icn-mail.png);}
